@@ -25,7 +25,7 @@ public class NadjiDestinacije extends  AbstractGenericOperation{
     }
     
     
-    public List<Destinacija> vratiAvione() {
+    public List<Destinacija> vratiDestinacije() {
         return destinacije;
     }
     

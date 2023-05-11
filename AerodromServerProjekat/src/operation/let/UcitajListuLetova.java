@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package operation.avion;
+package operation.let;
 
 import domain.Avion;
+import domain.Let;
 import java.util.List;
 import operation.AbstractGenericOperation;
 
@@ -12,22 +13,22 @@ import operation.AbstractGenericOperation;
  *
  * @author Nikola
  */
-public class UcitajListuAviona extends AbstractGenericOperation{
-    private List<Avion> avioni;
+public class UcitajListuLetova extends AbstractGenericOperation{
+    private List<Let> letovi;
 
+    
     @Override
     protected void preconditions(Object param) throws Exception {
     }
 
     @Override
     protected void executeOperation(Object param) throws Exception {
-        avioni = repository.getAll((Avion)param);
+        letovi = repository.getAll((Let)param);
     }
     
-     public List<Avion> vratiListuAviona() {
-        return avioni;
+     public List<Let> vratiListuLetova() {
+        return letovi;
     }
-    
     
     
 }

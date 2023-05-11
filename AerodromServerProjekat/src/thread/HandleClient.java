@@ -10,6 +10,7 @@ import communication.Request;
 import communication.Response;
 import communication.Sender;
 import controller.Controller;
+import domain.Let;
 import java.net.Socket;
 import java.util.List;
 
@@ -36,7 +37,47 @@ public class HandleClient extends Thread{
                 
                 try{
                     switch(request.getOperation()){
-                       
+                        case UCITAJ_LISTU_AVIONA:
+                            break;
+                        case UCITAJ_LISTU_DESTINACIJA:
+                            break;
+                        case UCITAJ_LISTU_LETOVA:
+                            break;
+                        case ZAPAMTI_LET:
+                            Let let = (Let) request.getArgument();
+                            Controller.getInstance().zapamtiLet(let);
+                            break;
+                        case NADJI_LETOVE:
+                            break;
+                        case UCITAJ_LET:
+                            break;
+                        case KREIRAJ_AVION:
+                            break;
+                        case ZAPAMTI_AVION:
+                            break;
+                        case NADJI_AVIONE:
+                            break;
+                        case UCITAJ_AVION:
+                            break;
+                        case KREIRAJ_DESTINACIJU:
+                            break;
+                        case ZAPAMTI_DESTINACIJU:
+                            break;
+                        case NADJI_DESTINACIJE:
+                            break;
+                        case UCITAJ_DESTINACIJU:
+                            break;
+                        case OBRISI_DESTINACIJU:
+                            break;
+                        case ZAPAMTI_RASPORED:
+                            break;
+                        case NADJI_RASPOREDE:
+                            break;
+                        case UCITAJ_RASPORED:
+                            break;
+                        default:
+                            throw new AssertionError(request.getOperation().name());
+                        
                     }
                 }catch(Exception e){
                     response.setException(e);
