@@ -8,6 +8,7 @@ import domain.Avion;
 import domain.Destinacija;
 import domain.Korisnik;
 import domain.Let;
+import domain.Raspored;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
@@ -25,6 +26,8 @@ import operation.korisnik.LoginKorisnik;
 import operation.let.NadjiLetove;
 import operation.let.UcitajListuLetova;
 import operation.let.ZapamtiLet;
+import operation.raspored.NadjiRasporede;
+import operation.raspored.ZapamtiRaspored;
 import thread.Server;
 
 /**
@@ -94,10 +97,15 @@ public class Controller {
         AbstractGenericOperation operation = new ZapamtiAvion();
         operation.execute(avion);
     }
-    
-     public void zapamtiDestinaciju(Destinacija destinacija) throws Exception {
+
+    public void zapamtiDestinaciju(Destinacija destinacija) throws Exception {
         AbstractGenericOperation operation = new ZapamtiDestinaciju();
         operation.execute(destinacija);
+    }
+
+    public void zapamtiRaspored(Raspored raspored) throws Exception {
+        AbstractGenericOperation operation = new ZapamtiRaspored();
+        operation.execute(raspored);
     }
 
     public List<Let> vratiListuLetova() throws Exception {
@@ -124,12 +132,18 @@ public class Controller {
         return operation.vratiLetove();
     }
 
+    public List<Raspored> nadjiRasporede(Raspored raspored) throws Exception {
+        NadjiRasporede operation = new NadjiRasporede();
+        operation.execute(raspored);
+        return operation.vratiRasporede();
+    }
+
     public List<Avion> nadjiAvione(Avion avion) throws Exception {
         NadjiAvione operation = new NadjiAvione();
         operation.execute(avion);
         return operation.vratiAvione();
     }
-    
+
     public List<Destinacija> nadjiDestinacije(Destinacija destinacija) throws Exception {
         NadjiDestinacije operation = new NadjiDestinacije();
         operation.execute(destinacija);

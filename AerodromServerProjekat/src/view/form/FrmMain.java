@@ -4,6 +4,8 @@
  */
 package view.form;
 
+import controller.Controller;
+
 /**
  *
  * @author Nikola
@@ -44,8 +46,18 @@ public class FrmMain extends javax.swing.JFrame {
         jLabel2.setText("Alat za administraciju aerodroma");
 
         btnPokreni.setText("Pokreni server");
+        btnPokreni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPokreniActionPerformed(evt);
+            }
+        });
 
         btnZaustavi.setText("Zaustavi server");
+        btnZaustavi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZaustaviActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Podesavanja");
 
@@ -105,6 +117,18 @@ public class FrmMain extends javax.swing.JFrame {
         new FrmKonfiguracija(this, true).setVisible(true);
 
     }//GEN-LAST:event_btnKonfiguracijaActionPerformed
+
+    private void btnPokreniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPokreniActionPerformed
+
+        Controller.getInstance().startServer();
+        btnPokreni.setEnabled(false);
+        btnZaustavi.setEnabled(true);
+     }//GEN-LAST:event_btnPokreniActionPerformed
+
+    private void btnZaustaviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZaustaviActionPerformed
+        Controller.getInstance().stopServer();
+        btnPokreni.setEnabled(true);
+        btnZaustavi.setEnabled(false);    }//GEN-LAST:event_btnZaustaviActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
