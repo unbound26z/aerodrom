@@ -5,6 +5,7 @@
 package domain;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,7 @@ import java.util.Objects;
 public class Raspored implements GenericEntity{
     private int rasporedId;
     private Date datum;
+    private List<StavkaRasporeda> stavke;
 
     @Override
     public boolean equals(Object obj) {
@@ -57,11 +59,13 @@ public class Raspored implements GenericEntity{
     }
 
     public Raspored() {
+        this.stavke = new ArrayList<>();
     }
 
     public Raspored(int rasporedId, Date datum) {
         this.rasporedId = rasporedId;
         this.datum = datum;
+        this.stavke = new ArrayList<>();
     }
 
     @Override
