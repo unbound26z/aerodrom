@@ -28,5 +28,7 @@ public enum Operation implements Serializable {
     OBRISI_DESTINACIJU,
     ZAPAMTI_RASPORED,
     NADJI_RASPOREDE,
-    UCITAJ_RASPORED
+    UCITAJ_RASPORED,
+    LOGIN,
+    LOGOUT
 }
