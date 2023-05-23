@@ -4,6 +4,10 @@
  */
 package view.form;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Nikola
@@ -36,7 +40,7 @@ public class FrmDodajAvion extends javax.swing.JFrame {
         txtMestoProizvodnje = new javax.swing.JTextField();
         txtGodinaProizvodnje = new javax.swing.JTextField();
         txtAviokompanija = new javax.swing.JTextField();
-        BtnDodaj = new javax.swing.JButton();
+        btnDodaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +54,7 @@ public class FrmDodajAvion extends javax.swing.JFrame {
 
         jLabel5.setText("Aviokompanija:");
 
-        BtnDodaj.setText("Dodaj");
+        btnDodaj.setText("Dodaj");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,12 +62,14 @@ public class FrmDodajAvion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnDodaj)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtNaziv)
@@ -72,10 +78,6 @@ public class FrmDodajAvion extends javax.swing.JFrame {
                     .addComponent(txtGodinaProizvodnje)
                     .addComponent(txtAviokompanija, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
                 .addGap(15, 15, 15))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnDodaj)
-                .addGap(124, 124, 124))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,52 +102,17 @@ public class FrmDodajAvion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtAviokompanija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(BtnDodaj)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(btnDodaj)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmDodajAvion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmDodajAvion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmDodajAvion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmDodajAvion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmDodajAvion().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnDodaj;
+    private javax.swing.JButton btnDodaj;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -157,4 +124,57 @@ public class FrmDodajAvion extends javax.swing.JFrame {
     private javax.swing.JTextField txtMestoProizvodnje;
     private javax.swing.JTextField txtNaziv;
     // End of variables declaration//GEN-END:variables
+
+    public void dodajBtnDodajAvion(ActionListener actionListener) {
+        btnDodaj.addActionListener(actionListener);
+    }
+
+    public JButton getBtnDodaj() {
+        return btnDodaj;
+    }
+
+    public void setBtnDodaj(JButton BtnDodaj) {
+        this.btnDodaj = BtnDodaj;
+    }
+
+    public JTextField getTxtAviokompanija() {
+        return txtAviokompanija;
+    }
+
+    public void setTxtAviokompanija(JTextField txtAviokompanija) {
+        this.txtAviokompanija = txtAviokompanija;
+    }
+
+    public JTextField getTxtBrojSedista() {
+        return txtBrojSedista;
+    }
+
+    public void setTxtBrojSedista(JTextField txtBrojSedista) {
+        this.txtBrojSedista = txtBrojSedista;
+    }
+
+    public JTextField getTxtGodinaProizvodnje() {
+        return txtGodinaProizvodnje;
+    }
+
+    public void setTxtGodinaProizvodnje(JTextField txtGodinaProizvodnje) {
+        this.txtGodinaProizvodnje = txtGodinaProizvodnje;
+    }
+
+    public JTextField getTxtMestoProizvodnje() {
+        return txtMestoProizvodnje;
+    }
+
+    public void setTxtMestoProizvodnje(JTextField txtMestoProizvodnje) {
+        this.txtMestoProizvodnje = txtMestoProizvodnje;
+    }
+
+    public JTextField getTxtNaziv() {
+        return txtNaziv;
+    }
+
+    public void setTxtNaziv(JTextField txtNaziv) {
+        this.txtNaziv = txtNaziv;
+    }
+
 }

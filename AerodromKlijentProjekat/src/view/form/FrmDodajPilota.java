@@ -4,6 +4,10 @@
  */
 package view.form;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Nikola
@@ -107,40 +111,6 @@ public class FrmDodajPilota extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrezimeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmDodajPilota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmDodajPilota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmDodajPilota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmDodajPilota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmDodajPilota().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
@@ -153,4 +123,51 @@ public class FrmDodajPilota extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrezime;
     private javax.swing.JTextField txtRadniStaz;
     // End of variables declaration//GEN-END:variables
+
+    public void dodajBtnDodajPilota(ActionListener actionListener) {
+        btnDodaj.addActionListener(actionListener);
+    }
+
+
+    
+    public JButton getBtnDodaj() {
+        return btnDodaj;
+    }
+
+    public void setBtnDodaj(JButton btnDodaj) {
+        this.btnDodaj = btnDodaj;
+    }
+
+    public JTextField getTxtDatum() {
+        return txtDatum;
+    }
+
+    public void setTxtDatum(JTextField txtDatum) {
+        this.txtDatum = txtDatum;
+    }
+
+    public JTextField getTxtIme() {
+        return txtIme;
+    }
+
+    public void setTxtIme(JTextField txtIme) {
+        this.txtIme = txtIme;
+    }
+
+    public JTextField getTxtPrezime() {
+        return txtPrezime;
+    }
+
+    public void setTxtPrezime(JTextField txtPrezime) {
+        this.txtPrezime = txtPrezime;
+    }
+
+    public JTextField getTxtRadniStaz() {
+        return txtRadniStaz;
+    }
+
+    public void setTxtRadniStaz(JTextField txtRadniStaz) {
+        this.txtRadniStaz = txtRadniStaz;
+    }
+
 }

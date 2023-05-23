@@ -49,8 +49,8 @@ public class Communication {
         return receiver;
     }
 
-    public Korisnik login(String email, String sifra, Socket socket) throws Exception {
-        Request request = new Request(Operation.LOGIN, new Korisnik(email, sifra, null, null));
+    public Korisnik login(String email, String password) throws Exception {
+        Request request = new Request(Operation.LOGIN, new Korisnik(email, password, null, null));
         sender.send(request);
 
         Response response = (Response) receiver.receive();
@@ -59,6 +59,7 @@ public class Communication {
         } else {
             throw response.getException();
         }
+
     }
 
     public Socket logout(Korisnik korisnik) throws Exception {
