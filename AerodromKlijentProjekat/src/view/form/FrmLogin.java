@@ -4,6 +4,11 @@
  */
 package view.form;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Nikola
@@ -123,4 +128,33 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtSifra;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnLogin() {
+        return btnLogin;
+    }
+
+    public void setBtnLogin(JButton btnLogin) {
+        this.btnLogin = btnLogin;
+    }
+
+    public JTextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public void setTxtEmail(JTextField txtEmail) {
+        this.txtEmail = txtEmail;
+    }
+
+    public JPasswordField getTxtSifra() {
+        return txtSifra;
+    }
+
+    public void setTxtSifra(JPasswordField txtSifra) {
+        this.txtSifra = txtSifra;
+    }
+
+    public void dodajBtnLoginListener(ActionListener actionListener) {
+        btnLogin.addActionListener(actionListener);
+    }
+
 }

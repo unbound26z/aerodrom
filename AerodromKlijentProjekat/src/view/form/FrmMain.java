@@ -4,6 +4,12 @@
  */
 package view.form;
 
+import domain.Korisnik;
+import java.awt.event.ActionListener;
+import java.net.Socket;
+import javax.swing.JLabel;
+import view.coordinator.ViewCoordinator;
+
 /**
  *
  * @author Nikola
@@ -30,21 +36,23 @@ public class FrmMain extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblKorisnik = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jmiRaspored = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jmiDodajAvion = new javax.swing.JMenuItem();
+        jmiAvion = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jmiDodajPilota = new javax.swing.JMenuItem();
+        jmiPilot = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jmiDodajDestinaciju = new javax.swing.JMenuItem();
+        jmiDestinacija = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jmiDodajLet = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jmiProfil = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -57,60 +65,67 @@ public class FrmMain extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Dobrodosli, ");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel2.setText("Korisnik");
+        lblKorisnik.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblKorisnik.setText("Korisnik");
 
         jMenu1.setText("Raspored");
 
-        jMenuItem3.setText("Pregled ");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jmiRaspored.setText("Pregled ");
+        jmiRaspored.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jmiRasporedActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(jmiRaspored);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Avion");
 
-        jMenuItem4.setText("Dodaj");
-        jMenu2.add(jMenuItem4);
+        jmiDodajAvion.setText("Dodaj");
+        jMenu2.add(jmiDodajAvion);
 
-        jMenuItem5.setText("Pregled");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jmiAvion.setText("Pregled");
+        jmiAvion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jmiAvionActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        jMenu2.add(jmiAvion);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Pilot");
 
-        jMenuItem6.setText("Dodaj");
-        jMenu3.add(jMenuItem6);
+        jmiDodajPilota.setText("Dodaj");
+        jMenu3.add(jmiDodajPilota);
 
-        jMenuItem7.setText("Pregled");
-        jMenu3.add(jMenuItem7);
+        jmiPilot.setText("Pregled");
+        jMenu3.add(jmiPilot);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Destinacija");
 
-        jMenuItem8.setText("Dodaj");
-        jMenu4.add(jMenuItem8);
+        jmiDodajDestinaciju.setText("Dodaj");
+        jMenu4.add(jmiDodajDestinaciju);
 
-        jMenuItem9.setText("Pregled");
-        jMenu4.add(jMenuItem9);
+        jmiDestinacija.setText("Pregled");
+        jMenu4.add(jmiDestinacija);
 
         jMenuBar1.add(jMenu4);
 
+        jMenu7.setText("Let");
+
+        jmiDodajLet.setText("Dodaj");
+        jMenu7.add(jmiDodajLet);
+
+        jMenuBar1.add(jMenu7);
+
         jMenu6.setText("Profil");
 
-        jMenuItem10.setText("Pregled profila");
-        jMenu6.add(jMenuItem10);
+        jmiProfil.setText("Pregled profila");
+        jMenu6.add(jmiProfil);
 
         jMenuBar1.add(jMenu6);
 
@@ -123,7 +138,7 @@ public class FrmMain extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(lblKorisnik)
                     .addComponent(jLabel1))
                 .addContainerGap(265, Short.MAX_VALUE))
         );
@@ -133,75 +148,102 @@ public class FrmMain extends javax.swing.JFrame {
                 .addGap(83, 83, 83)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(lblKorisnik)
                 .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jmiAvionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAvionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_jmiAvionActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jmiRasporedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRasporedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jmiRasporedActionPerformed
+
+    public JLabel getLblLider() {
+        return lblKorisnik;
+    }
+
+    public void setLblLider(JLabel lblKorisnik) {
+        this.lblKorisnik = lblKorisnik;
+    }
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+        // TODO add your handling code here:
+        try {
+            Korisnik k = (Korisnik) ViewCoordinator.getInstance().getParam("Korisnik");
+            Socket socket = communication.Communication.getInstance().logout(k);
+            socket.close();
+            System.exit(0);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmMain().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jmiAvion;
+    private javax.swing.JMenuItem jmiDestinacija;
+    private javax.swing.JMenuItem jmiDodajAvion;
+    private javax.swing.JMenuItem jmiDodajDestinaciju;
+    private javax.swing.JMenuItem jmiDodajLet;
+    private javax.swing.JMenuItem jmiDodajPilota;
+    private javax.swing.JMenuItem jmiPilot;
+    private javax.swing.JMenuItem jmiProfil;
+    private javax.swing.JMenuItem jmiRaspored;
+    private javax.swing.JLabel lblKorisnik;
     // End of variables declaration//GEN-END:variables
+
+    public void dodajJmiDodajAvionListener(ActionListener actionListener) {
+        jmiDodajAvion.addActionListener(actionListener);
+    }
+
+    public void dodajJmiRasporedListener(ActionListener actionListener) {
+        jmiRaspored.addActionListener(actionListener);
+    }
+
+    public void dodajJmiAvionListener(ActionListener actionListener) {
+        jmiAvion.addActionListener(actionListener);
+    }
+
+    public void dodajJmiPilotListener(ActionListener actionListener) {
+        jmiPilot.addActionListener(actionListener);
+    }
+
+    public void dodajJmiDodajPilotaListener(ActionListener actionListener) {
+        jmiDodajPilota.addActionListener(actionListener);
+    }
+
+    public void dodajJmiDestinacijaListener(ActionListener actionListener) {
+        jmiDestinacija.addActionListener(actionListener);
+    }
+
+    public void dodajJmiDodajDestinacijuListener(ActionListener actionListener) {
+        jmiDodajDestinaciju.addActionListener(actionListener);
+    }
+
+    public void dodajJmiDodajLetListener(ActionListener actionListener) {
+        jmiDodajLet.addActionListener(actionListener);
+    }
+
+    public void dodajJmiProfilListener(ActionListener actionListener) {
+        jmiProfil.addActionListener(actionListener);
+    }
 }

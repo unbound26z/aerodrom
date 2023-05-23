@@ -12,13 +12,14 @@ import java.util.Objects;
  *
  * @author Nikola
  */
-public class Let implements GenericEntity{
+public class Let implements GenericEntity {
+
     private int letId;
     private int trajanje;
     private int cena;
-    private String mestoPolaska;
-    private Avion avion;
+    private Destinacija mestoPolaska;
     private Destinacija destinacija;
+    private Avion avion;
     private Pilot pilot;
 
     @Override
@@ -89,11 +90,11 @@ public class Let implements GenericEntity{
         this.cena = cena;
     }
 
-    public String getMestoPolaska() {
+    public Destinacija getMestoPolaska() {
         return mestoPolaska;
     }
 
-    public void setMestoPolaska(String mestoPolaska) {
+    public void setMestoPolaska(Destinacija mestoPolaska) {
         this.mestoPolaska = mestoPolaska;
     }
 
@@ -121,7 +122,7 @@ public class Let implements GenericEntity{
         this.pilot = pilot;
     }
 
-    public Let(int letId, int trajanje, int cena, String mestoPolaska, Avion avion, Destinacija destinacija, Pilot pilot) {
+    public Let(int letId, int trajanje, int cena, Destinacija mestoPolaska, Avion avion, Destinacija destinacija, Pilot pilot) {
         this.letId = letId;
         this.trajanje = trajanje;
         this.cena = cena;
@@ -178,5 +179,5 @@ public class Let implements GenericEntity{
     public String getSearchCase() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
