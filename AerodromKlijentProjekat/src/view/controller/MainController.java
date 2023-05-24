@@ -4,6 +4,7 @@
  */
 package view.controller;
 
+import domain.Korisnik;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.coordinator.ViewCoordinator;
@@ -27,44 +28,58 @@ public class MainController {
         frmMain.setVisible(true);
 
     }
-    
-     private void addActionListener() {
+
+    private void addActionListener() {
         frmMain.dodajJmiAvionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ViewCoordinator.getInstance().openAddMemberForm();
+                ViewCoordinator.getInstance().openFrmAvion();
             }
         });
-        
-        frmMain.addJmiViewAllMembersListener(new ActionListener() {
+
+        frmMain.dodajJmiDestinacijaListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ViewCordinator.getInstance().openViewMembers();
+                ViewCoordinator.getInstance().openFrmDestinacija();
             }
         });
-        
-        frmMain.addJmiViewAllTaskGroupsListener(new ActionListener() {
+
+        frmMain.dodajJmiDodajAvionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ViewCordinator.getInstance().openViewTaskGroups();
+                ViewCoordinator.getInstance().openFrmDodajAvion();
             }
         });
-        
-        frmMain.addJmiViewProfileListener(new ActionListener() {
+
+        frmMain.dodajJmiDodajDestinacijuListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ViewCordinator.getInstance().openProfileForm();
+                ViewCoordinator.getInstance().openFrmDodajDestinaciju();
+            }
+        });
+
+        frmMain.dodajJmiDodajLetListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ViewCoordinator.getInstance().openFrmDodajLet();
+            }
+        });
+
+        frmMain.dodajJmiProfilListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ViewCoordinator.getInstance().openFrmProfil();
             }
         });
     }
 
     private void prepareView() {
-        CommitteeLeader cm = (CommitteeLeader) ViewCordinator.getInstance().getParam("Leader");
-        frmMain.getLblLider().setText(cm.getFirstname()+" "+cm.getLastname());
+        Korisnik k = (Korisnik) ViewCoordinator.getInstance().getParam("Korisnik");
+        frmMain.getLblLider().setText(k.getIme() + " " + k.getPrezime());
     }
 
     public FrmMain getFrmMain() {
         return frmMain;
     }
-    
+
 }

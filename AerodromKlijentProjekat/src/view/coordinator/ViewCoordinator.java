@@ -17,7 +17,16 @@ import view.controller.MainController;
 import view.controller.PilotController;
 import view.controller.ProfilController;
 import view.controller.RasporedController;
+import view.form.FrmAvion;
+import view.form.FrmDestinacija;
+import view.form.FrmDodajAvion;
+import view.form.FrmDodajDestinaciju;
+import view.form.FrmDodajLet;
+import view.form.FrmDodajRaspored;
 import view.form.FrmLogin;
+import view.form.FrmMain;
+import view.form.FrmPilot;
+import view.form.FrmProfil;
 
 /**
  *
@@ -47,12 +56,61 @@ public class ViewCoordinator {
         return instance;
     }
 
+    public void openMainForm() {
+        mainController = new MainController(new FrmMain());
+        mainController.openForm();
+    }
+
+    public void openFrmAvion() {
+        avionController = new AvionController(new FrmAvion());
+        avionController.openForm();
+    }
+
+     public void openFrmProfil() {
+        profilController = new ProfilController(new FrmProfil());
+        profilController.openForm();
+    }
+
+    
+    public void openFrmDestinacija() {
+        destinacijaController = new DestinacijaController(new FrmDestinacija());
+        destinacijaController.openForm();
+    }
+
+    public void openFrmDodajAvion() {
+        dodajAvionController = new DodajAvionController(new FrmDodajAvion());
+        dodajAvionController.openForm();
+    }
+
+    public void openFrmDodajDestinaciju() {
+        dodajDestinacijuController = new DodajDestinacijuController(new FrmDodajDestinaciju());
+        dodajDestinacijuController.openForm();
+    }
+
+    public void openFrmDodajLet() {
+        dodajLetController = new DodajLetController(new FrmDodajLet());
+        dodajLetController.openForm();
+    }
+
+    public void openFrmDodajRaspored() {
+        dodajRasporedController = new DodajRasporedController(new FrmDodajRaspored());
+        dodajRasporedController.openForm();
+    }
+
     public void addParam(String s, Object o) {
         params.put(s, o);
     }
 
     public Object getParam(String s) {
         return params.get(s);
+    }
+
+    public FrmMain getFrmMain() {
+        return mainController.getFrmMain();
+    }
+
+    public FrmAvion getFrmAvion() {
+        return avionController.getFrmAvion();
     }
 
 }
