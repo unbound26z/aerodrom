@@ -66,12 +66,16 @@ public class ViewCoordinator {
         avionController.openForm();
     }
 
-     public void openFrmProfil() {
+    public void openFrmProfil() {
         profilController = new ProfilController(new FrmProfil());
         profilController.openForm();
     }
 
-    
+    public void openFrmLogin() {
+        loginController = new LoginController(new FrmLogin());
+        loginController.openForm();
+    }
+
     public void openFrmDestinacija() {
         destinacijaController = new DestinacijaController(new FrmDestinacija());
         destinacijaController.openForm();
@@ -111,6 +115,14 @@ public class ViewCoordinator {
 
     public FrmAvion getFrmAvion() {
         return avionController.getFrmAvion();
+    }
+
+    public void refreshAvionView() {
+        avionController.refreshTable();
+    }
+
+    public void refreshDestinacijaView() {
+        destinacijaController.refreshTable();
     }
 
 }

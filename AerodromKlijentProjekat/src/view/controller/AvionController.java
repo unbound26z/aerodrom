@@ -30,6 +30,7 @@ public class AvionController {
 
     public AvionController(FrmAvion frmAvion) {
         this.frmAvion = frmAvion;
+        addActionListener();
     }
 
     public void openForm() {
@@ -53,7 +54,7 @@ public class AvionController {
             JOptionPane.showMessageDialog(frmAvion, "Error: " + ex.getMessage());
         }
         AvionTableModel atm = new AvionTableModel(avioni);
-        frmAvion.getTblMembers().setModel(atm);
+        frmAvion.getTblAvion().setModel(atm);
         TableColumn column = frmAvion.getTblAvion().getColumnModel().getColumn(2);
         column.setPreferredWidth(200);
 
@@ -92,32 +93,18 @@ public class AvionController {
 
     }
 
-    private void validateDates() throws Exception {
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy.");
+    public void refreshTable() {
+        List<Avion> avioni = new ArrayList<>();
         try {
-            deadLine = df.parse(frmTask.getTxtDeadline2().getText().trim());
-        } catch (ParseException ex) {
-            throw new Exception("Date need to be in format: dd.MM.yyyy.");
+            avioni = Communication.getInstance().vratiListuAviona();
+        } catch (SocketException se) {
+            JOptionPane.showMessageDialog(frmAvion, "Server is closed, Goodbye");
+            System.exit(0);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(frmAvion, "Error: " + ex.getMessage());
         }
-
-        if (!"".equals(frmTask.getTxtStartDate().getText().trim())) {
-            try {
-                startDate = df.parse(frmTask.getTxtStartDate().getText().trim());
-            } catch (ParseException ex) {
-                throw new Exception("Date need to be in format: dd.MM.yyyy.");
-            }
-        } else {
-            startDate = null;
-        }
-        if ("".equals(frmTask.getTxtFinishDate().getText().trim())) {
-            finishDate = null;
-        } else {
-            try {
-                finishDate = df.parse(frmTask.getTxtFinishDate().getText().trim());
-            } catch (ParseException ex) {
-                throw new Exception("Date need to be in format: dd.MM.yyyy.");
-            }
-        }
+        AvionTableModel tm = new AvionTableModel(avioni);
+        frmAvion.getTblAvion().setModel(tm);
     }
 
     private void validateEmptyFields() throws Exception {

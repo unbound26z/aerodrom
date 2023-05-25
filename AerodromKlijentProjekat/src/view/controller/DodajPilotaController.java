@@ -21,8 +21,6 @@ import view.form.FrmDodajPilota;
  *
  * @author Nikola
  */
-
-
 //Unneeded?
 public class DodajPilotaController {
 
@@ -30,6 +28,8 @@ public class DodajPilotaController {
 
     public DodajPilotaController(view.form.FrmDodajPilota frmDodajPilota) {
         this.frm = frmDodajPilota;
+        addActionListener();
+
     }
 
     public void openForm() {
@@ -40,26 +40,26 @@ public class DodajPilotaController {
         frm.dodajBtnDodajPilota(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                try {
-                    int cena = Integer.parseInt(frm.getTxtCena().getText().trim());
-                    int trajanje = Integer.parseInt(frm.getTxtTrajanje().getText().trim());
-                    Destinacija mestoPolaska = (Destinacija) frm.getCbPolazak().getSelectedItem();
-                    Destinacija mestoDolaska = (Destinacija) frm.getCbDolazak().getSelectedItem();
-                    Avion avion = (Avion) frm.getCbAvion().getSelectedItem();
-                    Pilot pilot = (Pilot) frm.getCbPilot().getSelectedItem();
-
-                    Communication.getInstance().zapa(new Let(0, trajanje, cena, mestoPolaska, avion, mestoDolaska, pilot));
-                    JOptionPane.showMessageDialog(frm, "Let uspesno kreiran!");
-                    ViewCoordinator.getInstance().refreshTaskGroupsView();
-                } catch (SocketException se) {
-                    JOptionPane.showMessageDialog(frm, "Server zatvoren: " + se.getMessage());
-                    System.exit(0);
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(frm, "Neuspesno kreiranje leta: " + e.getMessage());
-                    if (e.getMessage().equals("SERVER zatvoren")) {
-                        System.exit(0);
-                    }
-                }
+//                try {
+//                    int cena = Integer.parseInt(frm.getTxtCena().getText().trim());
+//                    int trajanje = Integer.parseInt(frm.getTxtTrajanje().getText().trim());
+//                    Destinacija mestoPolaska = (Destinacija) frm.getCbPolazak().getSelectedItem();
+//                    Destinacija mestoDolaska = (Destinacija) frm.getCbDolazak().getSelectedItem();
+//                    Avion avion = (Avion) frm.getCbAvion().getSelectedItem();
+//                    Pilot pilot = (Pilot) frm.getCbPilot().getSelectedItem();
+//
+//                    Communication.getInstance().zapa(new Let(0, trajanje, cena, mestoPolaska, avion, mestoDolaska, pilot));
+//                    JOptionPane.showMessageDialog(frm, "Let uspesno kreiran!");
+//                    ViewCoordinator.getInstance().refreshTaskGroupsView();
+//                } catch (SocketException se) {
+//                    JOptionPane.showMessageDialog(frm, "Server zatvoren: " + se.getMessage());
+//                    System.exit(0);
+//                } catch (Exception e) {
+//                    JOptionPane.showMessageDialog(frm, "Neuspesno kreiranje leta: " + e.getMessage());
+//                    if (e.getMessage().equals("SERVER zatvoren")) {
+//                        System.exit(0);
+//                    }
+//                }
             }
         });
     }

@@ -25,6 +25,8 @@ public class DodajDestinacijuController {
 
     public DodajDestinacijuController(view.form.FrmDodajDestinaciju frmDodajDestinaciju) {
         this.frm = frmDodajDestinaciju;
+        addActionListener();
+
     }
 
     public void openForm() {
@@ -40,7 +42,7 @@ public class DodajDestinacijuController {
                     String drzava = frm.getTxtDrzava().getText().trim();
                     Communication.getInstance().zapamtiDestinaciju(new Destinacija(0, nazivDestinacije, drzava));
                     JOptionPane.showMessageDialog(frm, "Destinacija uspesno kreirana!");
-                    ViewCoordinator.getInstance().refreshTaskGroupsView();
+                    ViewCoordinator.getInstance().refreshDestinacijaView();
                 } catch (SocketException se) {
                     JOptionPane.showMessageDialog(frm, "Server zatvoren: " + se.getMessage());
                     System.exit(0);

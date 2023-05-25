@@ -27,6 +27,8 @@ public class DodajLetController {
 
     public DodajLetController(view.form.FrmDodajLet frmDodajLet) {
         this.frm = frmDodajLet;
+        addActionListener();
+
     }
 
     public void openForm() {
@@ -47,7 +49,6 @@ public class DodajLetController {
 
                     Communication.getInstance().zapamtiLet(new Let(0, trajanje, cena, mestoPolaska, avion, mestoDolaska, pilot));
                     JOptionPane.showMessageDialog(frm, "Let uspesno kreiran!");
-                    ViewCoordinator.getInstance().refreshTaskGroupsView();
                 } catch (SocketException se) {
                     JOptionPane.showMessageDialog(frm, "Server zatvoren: " + se.getMessage());
                     System.exit(0);
@@ -60,5 +61,5 @@ public class DodajLetController {
             }
         });
     }
-    
+
 }

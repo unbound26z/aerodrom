@@ -4,11 +4,13 @@
  */
 package view.controller;
 
+import domain.Korisnik;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.Socket;
 import java.net.SocketException;
 import javax.swing.JOptionPane;
+import view.coordinator.ViewCoordinator;
 import view.form.FrmMain;
 import view.form.FrmProfil;
 
@@ -22,6 +24,8 @@ public class ProfilController {
 
     public ProfilController(view.form.FrmProfil frmProfil) {
         this.frmProfil = frmProfil;
+        addActionListener();
+
     }
 
     public void openForm() {
@@ -29,25 +33,31 @@ public class ProfilController {
     }
 
     private void addActionListener() {
-        frmProfil.addBtnLogoutListener(new ActionListener() {
+        frmProfil.dodajBtnLogoutListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    CommitteeLeader cm = (CommitteeLeader) ViewCordinator.getInstance().getParam("Leader");
+                    Korisnik cm = (Korisnik) ViewCoordinator.getInstance().getParam("Leader");
                     Socket socket = communication.Communication.getInstance().logout(cm);
-                    frmProfile.dispose();
-                    FrmMain frmMain = ViewCordinator.getInstance().getFrmMain();
+                    frmProfil.dispose();
+                    FrmMain frmMain = ViewCoordinator.getInstance().getFrmMain();
                     frmMain.dispose();
                     socket.close();
-                    ViewCordinator.getInstance().openLoginForm();
+                    ViewCoordinator.getInstance().openFrmLogin();
                 } catch (SocketException se) {
-                    JOptionPane.showMessageDialog(frmProfile, "Server is closed, Goodbye");
+                    JOptionPane.showMessageDialog(frmProfil, "Server is closed, Goodbye");
                     System.exit(0);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(frmProfile, "Goodbye!" + e.getMessage());
+                    JOptionPane.showMessageDialog(frmProfil, "Goodbye!" + e.getMessage());
                 }
             }
         });
+    }
+
+    private void prepareView() {
+        Korisnik k = (Korisnik) ViewCoordinator.getInstance().getParam("Korisnik");
+        System.out.println(k.getIme());
+        frmProfil.getLblIme().setText(k.getIme() + " " + k.getPrezime());
     }
 
 }

@@ -23,6 +23,8 @@ public class DodajAvionController {
 
     public DodajAvionController(view.form.FrmDodajAvion frmDodajAvion) {
         this.frmDodajAvion = frmDodajAvion;
+        addActionListener();
+
     }
 
     public void openForm() {
@@ -41,7 +43,7 @@ public class DodajAvionController {
                     String aviokompanija = frmDodajAvion.getTxtAviokompanija().getText().trim();
                     Communication.getInstance().zapamtiAvion(new Avion(0, name, brojSedista, mestoProizvodnje, godinaProizvodnje, aviokompanija));
                     JOptionPane.showMessageDialog(frmDodajAvion, "Avion uspesno kreiran!");
-                    ViewCoordinator.getInstance().refreshTaskGroupsView();
+                    ViewCoordinator.getInstance().refreshAvionView();
                 } catch (SocketException se) {
                     JOptionPane.showMessageDialog(frmDodajAvion, "Server zatvoren: " + se.getMessage());
                     System.exit(0);

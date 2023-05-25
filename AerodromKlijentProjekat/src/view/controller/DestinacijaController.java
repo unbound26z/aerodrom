@@ -32,6 +32,8 @@ public class DestinacijaController {
 
     public DestinacijaController(FrmDestinacija frm) {
         this.frm = frm;
+        addActionListener();
+
     }
 
     public void openForm() {
@@ -92,6 +94,20 @@ public class DestinacijaController {
             }
         });
 
+    }
+
+    public void refreshTable() {
+        List<Destinacija> destinacije = new ArrayList<>();
+        try {
+            destinacije = Communication.getInstance().vratiListuDestinaicja();
+        } catch (SocketException se) {
+            JOptionPane.showMessageDialog(frm, "Server is closed, Goodbye");
+            System.exit(0);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(frm, "Error: " + ex.getMessage());
+        }
+        DestinacijaTableModel tm = new DestinacijaTableModel(destinacije);
+        frm.getTblDestinacija().setModel(tm);
     }
 
     private void validateEmptyFields() throws Exception {
