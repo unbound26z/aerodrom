@@ -10,11 +10,10 @@ import view.controller.DestinacijaController;
 import view.controller.DodajAvionController;
 import view.controller.DodajDestinacijuController;
 import view.controller.DodajLetController;
-import view.controller.DodajPilotaController;
 import view.controller.DodajRasporedController;
 import view.controller.LoginController;
 import view.controller.MainController;
-import view.controller.PilotController;
+import view.controller.LetController;
 import view.controller.ProfilController;
 import view.controller.RasporedController;
 import view.form.FrmAvion;
@@ -25,7 +24,7 @@ import view.form.FrmDodajLet;
 import view.form.FrmDodajRaspored;
 import view.form.FrmLogin;
 import view.form.FrmMain;
-import view.form.FrmPilot;
+import view.form.FrmLet;
 import view.form.FrmProfil;
 
 /**
@@ -41,13 +40,13 @@ public class ViewCoordinator {
     private DodajAvionController dodajAvionController;
     private DodajDestinacijuController dodajDestinacijuController;
     private DodajLetController dodajLetController;
-    private DodajPilotaController dodajPilotaController;
     private DodajRasporedController dodajRasporedController;
     private LoginController loginController;
     private MainController mainController;
-    private PilotController pilotController;
+    private LetController pilotController;
     private ProfilController profilController;
     private RasporedController rasporedController;
+    private LetController letController;
 
     public static ViewCoordinator getInstance() {
         if (instance == null) {
@@ -79,6 +78,11 @@ public class ViewCoordinator {
     public void openFrmDestinacija() {
         destinacijaController = new DestinacijaController(new FrmDestinacija());
         destinacijaController.openForm();
+    }
+    
+    public void openFrmLet() {
+        letController = new LetController(new FrmLet());
+        letController.openForm();
     }
 
     public void openFrmDodajAvion() {
@@ -115,6 +119,10 @@ public class ViewCoordinator {
 
     public FrmAvion getFrmAvion() {
         return avionController.getFrmAvion();
+    }
+    
+    public FrmLet getFrmLet() {
+        return letController.getFrmLet();
     }
 
     public void refreshAvionView() {

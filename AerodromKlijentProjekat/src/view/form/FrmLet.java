@@ -13,12 +13,12 @@ import javax.swing.JTextField;
  *
  * @author Nikola
  */
-public class FrmPilot extends javax.swing.JFrame {
+public class FrmLet extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmPilot
      */
-    public FrmPilot() {
+    public FrmLet() {
         initComponents();
     }
 
@@ -32,14 +32,14 @@ public class FrmPilot extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPilot = new javax.swing.JTable();
+        tblLet = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        txtPilot = new javax.swing.JTextField();
+        txtLet = new javax.swing.JTextField();
         btnNadji = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tblPilot.setModel(new javax.swing.table.DefaultTableModel(
+        tblLet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -50,9 +50,9 @@ public class FrmPilot extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblPilot);
+        jScrollPane1.setViewportView(tblLet);
 
-        jLabel1.setText("Nadji pilota:");
+        jLabel1.setText("Nadji let:");
 
         btnNadji.setText("Nadji");
 
@@ -67,7 +67,7 @@ public class FrmPilot extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtPilot, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtLet, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addComponent(btnNadji)))
                 .addContainerGap(49, Short.MAX_VALUE))
@@ -78,7 +78,7 @@ public class FrmPilot extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtPilot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNadji))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -93,8 +93,8 @@ public class FrmPilot extends javax.swing.JFrame {
     private javax.swing.JButton btnNadji;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblPilot;
-    private javax.swing.JTextField txtPilot;
+    private javax.swing.JTable tblLet;
+    private javax.swing.JTextField txtLet;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtnNadji() {
@@ -105,20 +105,20 @@ public class FrmPilot extends javax.swing.JFrame {
         this.btnNadji = btnNadji;
     }
 
-    public JTable getTblPilot() {
-        return tblPilot;
+    public JTable getTblLet() {
+        return tblLet;
     }
 
-    public void setTblPilot(JTable tblPilot) {
-        this.tblPilot = tblPilot;
+    public void setTblLet(JTable tblPilot) {
+        this.tblLet = tblPilot;
     }
 
-    public JTextField getTxtPilot() {
-        return txtPilot;
+    public JTextField getTxtLet() {
+        return txtLet;
     }
 
-    public void setTxtPilot(JTextField txtPilot) {
-        this.txtPilot = txtPilot;
+    public void setTxtLet(JTextField txtPilot) {
+        this.txtLet = txtPilot;
     }
 
     public void dodajBtnNadjiListener(ActionListener actionListener) {

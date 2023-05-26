@@ -42,7 +42,7 @@ public class DestinacijaTableModel extends AbstractTableModel {
         }
     }
 
-    public void obrisiAvion(Destinacija a) {
+    public void obrisiDestinaciju(Destinacija a) {
         Destinacija destinacija = new Destinacija();
         for (Destinacija aa : destinacije) {
             if (aa.getDestinacijaId() == a.getDestinacijaId()) {
@@ -75,16 +75,16 @@ public class DestinacijaTableModel extends AbstractTableModel {
         return columnNames[i];
     }
 
-    public void addTask(Destinacija t) {
+    public void dodaj(Destinacija t) {
         destinacije.add(t);
         fireTableDataChanged();
     }
 
-    public List<Destinacija> getTasks() {
+    public List<Destinacija> vrati() {
         return destinacije;
     }
 
-    public Destinacija getAvionAt(int row) {
+    public Destinacija vratiDestinacijuNa(int row) {
         return destinacije.get(row);
     }
 }

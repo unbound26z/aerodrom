@@ -14,8 +14,8 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Nikola
  */
-public class RasporedTableModel extends AbstractTableModel{
-    
+public class RasporedTableModel extends AbstractTableModel {
+
     private List<Raspored> rasporedi;
     private String[] columnNames = {"ID", "Datum"};
 
@@ -36,7 +36,7 @@ public class RasporedTableModel extends AbstractTableModel{
     public void exist(String id) throws Exception {
         for (Raspored t : rasporedi) {
             //TODO: Proveri da li je u redu
-            if (t.getRasporedId()== Long.parseLong(id)) {
+            if (t.getRasporedId() == Long.parseLong(id)) {
                 throw new Exception("Task with thid ID already exists");
             }
         }
@@ -45,7 +45,7 @@ public class RasporedTableModel extends AbstractTableModel{
     public void obrisiAvion(Raspored a) {
         Raspored raspored = new Raspored();
         for (Raspored aa : rasporedi) {
-            if (aa.getRasporedId()== a.getRasporedId()) {
+            if (aa.getRasporedId() == a.getRasporedId()) {
                 raspored = aa;
             }
         }
@@ -53,19 +53,22 @@ public class RasporedTableModel extends AbstractTableModel{
         fireTableDataChanged();
 
     }
-    
-     @Override
+
+    @Override
     public Object getValueAt(int i, int i1) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
-       
-        
-        switch(i1){
-            case 0: return rasporedi.get(i).getRasporedId();
-            case 1: 
-                if(rasporedi.get(i).getDatum()!=null){
-                return sdf.format(rasporedi.get(i).getDatum());
-                } else return "";
-            default: return "n/a";
+
+        switch (i1) {
+            case 0:
+                return rasporedi.get(i).getRasporedId();
+            case 1:
+                if (rasporedi.get(i).getDatum() != null) {
+                    return sdf.format(rasporedi.get(i).getDatum());
+                } else {
+                    return "";
+                }
+            default:
+                return "n/a";
         }
     }
 
@@ -73,18 +76,17 @@ public class RasporedTableModel extends AbstractTableModel{
     public String getColumnName(int i) {
         return columnNames[i];
     }
-    
-    public void addTask(Raspored t){
+
+    public void vrati(Raspored t) {
         rasporedi.add(t);
         fireTableDataChanged();
     }
 
-    public List<Raspored> getTasks() {
+    public List<Raspored> vrati() {
         return rasporedi;
     }
-    
 
-    public Raspored getAvionAt(int row) {
+    public Raspored vratiRasporedNa(int row) {
         return rasporedi.get(row);
     }
 }
