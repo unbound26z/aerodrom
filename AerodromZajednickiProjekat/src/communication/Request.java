@@ -4,11 +4,13 @@
  */
 package communication;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nikola
  */
-public class Request {
+public class Request implements Serializable{
     Operation operation;
     Object argument;
 

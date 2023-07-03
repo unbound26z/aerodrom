@@ -12,7 +12,8 @@ import java.util.Objects;
  *
  * @author Nikola
  */
-public class Avion implements GenericEntity{
+public class Avion implements GenericEntity {
+
     private int avionId;
     private String nazivAviona;
     private int brojSedista;
@@ -123,7 +124,7 @@ public class Avion implements GenericEntity{
 
     @Override
     public String getTableName() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "avion";
     }
 
     @Override
@@ -148,7 +149,7 @@ public class Avion implements GenericEntity{
 
     @Override
     public String getJoinCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     @Override
@@ -165,5 +166,5 @@ public class Avion implements GenericEntity{
     public String getSearchCase() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-        
+
 }

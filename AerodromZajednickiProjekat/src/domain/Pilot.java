@@ -14,6 +14,7 @@ import java.util.Objects;
  * @author Nikola
  */
 public class Pilot implements GenericEntity {
+
     private int pilotId;
     private String ime;
     private String prezime;
@@ -111,7 +112,7 @@ public class Pilot implements GenericEntity {
 
     @Override
     public String getTableName() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "pilot";
     }
 
     @Override
@@ -136,7 +137,7 @@ public class Pilot implements GenericEntity {
 
     @Override
     public String getJoinCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     @Override

@@ -4,6 +4,8 @@
  */
 package main;
 
+import view.coordinator.ViewCoordinator;
+
 /**
  *
  * @author Nikola
@@ -15,6 +17,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ViewCoordinator.getInstance().openFrmLogin();
+
     }
-    
+
 }

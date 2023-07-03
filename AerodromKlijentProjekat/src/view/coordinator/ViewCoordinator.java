@@ -4,6 +4,7 @@
  */
 package view.coordinator;
 
+import java.util.HashMap;
 import java.util.Map;
 import view.controller.AvionController;
 import view.controller.DestinacijaController;
@@ -48,6 +49,10 @@ public class ViewCoordinator {
     private RasporedController rasporedController;
     private LetController letController;
 
+    private ViewCoordinator() {
+        params = new HashMap<>();
+    }
+
     public static ViewCoordinator getInstance() {
         if (instance == null) {
             instance = new ViewCoordinator();
@@ -79,7 +84,7 @@ public class ViewCoordinator {
         destinacijaController = new DestinacijaController(new FrmDestinacija());
         destinacijaController.openForm();
     }
-    
+
     public void openFrmLet() {
         letController = new LetController(new FrmLet());
         letController.openForm();
@@ -120,7 +125,7 @@ public class ViewCoordinator {
     public FrmAvion getFrmAvion() {
         return avionController.getFrmAvion();
     }
-    
+
     public FrmLet getFrmLet() {
         return letController.getFrmLet();
     }

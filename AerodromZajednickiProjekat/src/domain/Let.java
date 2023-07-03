@@ -137,7 +137,7 @@ public class Let implements GenericEntity {
 
     @Override
     public String getTableName() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "let";
     }
 
     @Override
@@ -162,7 +162,7 @@ public class Let implements GenericEntity {
 
     @Override
     public String getJoinCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     @Override

@@ -74,6 +74,8 @@ public class Controller {
         Korisnik korisnik = new Korisnik();
         korisnik.setEmail(email);
         korisnik.setSifra(sifra);
+                                    System.out.println("aloo");
+
         operation.execute(korisnik);
         korisnik = operation.vratiKorisnika();
         if (activeCl.containsKey(korisnik.getEmail())) {

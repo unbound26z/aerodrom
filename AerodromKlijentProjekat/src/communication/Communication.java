@@ -52,7 +52,6 @@ public class Communication {
     public Korisnik login(String email, String password) throws Exception {
         Request request = new Request(Operation.LOGIN, new Korisnik(email, password, null, null));
         sender.send(request);
-
         Response response = (Response) receiver.receive();
         if (response.getException() == null) {
             return (Korisnik) response.getResult();

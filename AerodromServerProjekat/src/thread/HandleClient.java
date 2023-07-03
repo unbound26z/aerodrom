@@ -12,6 +12,7 @@ import communication.Sender;
 import controller.Controller;
 import domain.Avion;
 import domain.Destinacija;
+import domain.Korisnik;
 import domain.Let;
 import domain.Raspored;
 import java.net.Socket;
@@ -86,6 +87,12 @@ public class HandleClient extends Thread {
                         case NADJI_RASPOREDE:
                             Raspored trazeniRaspored = (Raspored) request.getArgument();
                             response.setResult(Controller.getInstance().nadjiRasporede(trazeniRaspored));
+                            break;
+                        case LOGIN:
+                            Korisnik k = (Korisnik) request.getArgument();
+                            k = Controller.getInstance().login(k.getEmail(), k.getSifra(), socket);
+                            response.setResult(k);
+                            response.setOperation(Operation.LOGIN);
                             break;
                         default:
                             throw new AssertionError(request.getOperation().name());

@@ -44,8 +44,12 @@ public class LoginController {
                     String email = frmLogin.getTxtEmail().getText().trim();
                     String password = String.copyValueOf(frmLogin.getTxtSifra().getPassword()).trim();
                     validateUserInput();
+                    
+                    System.out.println("Pre Connect");
                     Communication.getInstance().connect();
+                    System.out.println("Pre login");
                     Korisnik k = Communication.getInstance().login(email, password);
+                    System.out.println("posle login");
                     ViewCoordinator.getInstance().addParam("Korisnik", k);
                     JOptionPane.showMessageDialog(frmLogin, "Uspesnan login " + k.getIme());
                     ViewCoordinator.getInstance().openMainForm();

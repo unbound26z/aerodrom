@@ -13,7 +13,8 @@ import java.util.Objects;
  *
  * @author Nikola
  */
-public class StavkaRasporeda implements GenericEntity{
+public class StavkaRasporeda implements GenericEntity {
+
     private int rBr;
     private Raspored raspored;
     private LocalTime vreme;
@@ -95,11 +96,10 @@ public class StavkaRasporeda implements GenericEntity{
         this.vreme = vreme;
         this.let = let;
     }
-    
-    
+
     @Override
     public String getTableName() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "stavkarasporeda";
     }
 
     @Override
@@ -124,7 +124,7 @@ public class StavkaRasporeda implements GenericEntity{
 
     @Override
     public String getJoinCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     @Override
@@ -141,5 +141,5 @@ public class StavkaRasporeda implements GenericEntity{
     public String getSearchCase() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

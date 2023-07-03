@@ -12,7 +12,8 @@ import java.util.Objects;
  *
  * @author Nikola
  */
-public class StatistikaPilota implements GenericEntity{
+public class StatistikaPilota implements GenericEntity {
+
     private Let let;
     private Pilot pilot;
     private int brojLetova;
@@ -81,11 +82,10 @@ public class StatistikaPilota implements GenericEntity{
         this.pilot = pilot;
         this.brojLetova = brojLetova;
     }
-    
-    
+
     @Override
     public String getTableName() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "statistikapilota";
     }
 
     @Override
@@ -110,7 +110,7 @@ public class StatistikaPilota implements GenericEntity{
 
     @Override
     public String getJoinCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     @Override
@@ -127,5 +127,5 @@ public class StatistikaPilota implements GenericEntity{
     public String getSearchCase() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

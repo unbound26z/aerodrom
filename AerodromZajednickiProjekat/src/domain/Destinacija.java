@@ -5,6 +5,7 @@
 package domain;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +14,8 @@ import java.util.Objects;
  * @author Nikola
  */
 public class Destinacija implements GenericEntity {
-    private int destinacijaId;
+
+    private long destinacijaId;
     private String nazivDestinacije;
     private String drzava;
 
@@ -49,11 +51,11 @@ public class Destinacija implements GenericEntity {
         return "Destinacija{" + "destinacijaId=" + destinacijaId + ", nazivDestinacije=" + nazivDestinacije + ", drzava=" + drzava + '}';
     }
 
-    public int getDestinacijaId() {
+    public long getDestinacijaId() {
         return destinacijaId;
     }
 
-    public void setDestinacijaId(int destinacijaId) {
+    public void setDestinacijaId(long destinacijaId) {
         this.destinacijaId = destinacijaId;
     }
 
@@ -84,7 +86,7 @@ public class Destinacija implements GenericEntity {
 
     @Override
     public String getTableName() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "destinacija";
     }
 
     @Override
@@ -104,12 +106,21 @@ public class Destinacija implements GenericEntity {
 
     @Override
     public List<GenericEntity> getList(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<GenericEntity> lista = new ArrayList<>();
+        while (rs.next()) {
+            Destinacija k = new Destinacija();
+            k.setDestinacijaId(rs.getLong("id"));
+            k.setDrzava(rs.getString("drzava"));
+            k.setNazivDestinacije(rs.getString("nazivDestinacije"));
+            lista.add(k);
+        }
+
+        return lista;
     }
 
     @Override
     public String getJoinCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     @Override
@@ -126,5 +137,5 @@ public class Destinacija implements GenericEntity {
     public String getSearchCase() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

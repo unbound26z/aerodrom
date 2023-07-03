@@ -4,11 +4,13 @@
  */
 package communication;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nikola
  */
-public class Response {
+public class Response implements Serializable {
     private Object result;
     private Exception exception;
     private Operation operation;

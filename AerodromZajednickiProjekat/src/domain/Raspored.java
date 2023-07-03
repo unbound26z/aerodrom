@@ -14,7 +14,8 @@ import java.util.Objects;
  *
  * @author Nikola
  */
-public class Raspored implements GenericEntity{
+public class Raspored implements GenericEntity {
+
     private int rasporedId;
     private Date datum;
     private List<StavkaRasporeda> stavke;
@@ -70,7 +71,7 @@ public class Raspored implements GenericEntity{
 
     @Override
     public String getTableName() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "raspored";
     }
 
     @Override
@@ -95,7 +96,7 @@ public class Raspored implements GenericEntity{
 
     @Override
     public String getJoinCondition() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     @Override
@@ -112,5 +113,5 @@ public class Raspored implements GenericEntity{
     public String getSearchCase() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
