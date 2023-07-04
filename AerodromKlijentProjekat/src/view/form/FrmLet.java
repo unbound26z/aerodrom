@@ -13,12 +13,13 @@ import javax.swing.JTextField;
  *
  * @author Nikola
  */
-public class FrmLet extends javax.swing.JFrame {
+public class FrmLet extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmPilot
      */
-    public FrmLet() {
+    public FrmLet(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -37,7 +38,7 @@ public class FrmLet extends javax.swing.JFrame {
         txtLet = new javax.swing.JTextField();
         btnNadji = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblLet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

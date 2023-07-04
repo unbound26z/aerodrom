@@ -12,12 +12,13 @@ import javax.swing.JTextField;
  *
  * @author Nikola
  */
-public class FrmDodajPilota extends javax.swing.JFrame {
+public class FrmDodajPilota extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmDodajPilota
      */
-    public FrmDodajPilota() {
+    public FrmDodajPilota(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -40,7 +41,7 @@ public class FrmDodajPilota extends javax.swing.JFrame {
         txtRadniStaz = new javax.swing.JTextField();
         btnDodaj = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Ime:");
 
@@ -128,8 +129,6 @@ public class FrmDodajPilota extends javax.swing.JFrame {
         btnDodaj.addActionListener(actionListener);
     }
 
-
-    
     public JButton getBtnDodaj() {
         return btnDodaj;
     }

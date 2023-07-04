@@ -138,9 +138,9 @@ public class Avion implements GenericEntity {
         StringBuilder sb = new StringBuilder();
         sb.append("'").append(nazivAviona).append("', ")
                 .append("'").append(brojSedista).append("', ")
-                .append(mestoProizvodnje).append(", ")
+                .append("'").append(mestoProizvodnje).append("', ")
                 .append(godinaProizvodnje).append(", ")
-                .append(aviokompanija);
+                .append("'").append(aviokompanija).append("'");
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -148,7 +148,7 @@ public class Avion implements GenericEntity {
 
     @Override
     public void setId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.avionId = id;
     }
 
     @Override

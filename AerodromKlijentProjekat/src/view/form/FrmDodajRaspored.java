@@ -14,12 +14,13 @@ import javax.swing.JTextField;
  *
  * @author Nikola
  */
-public class FrmDodajRaspored extends javax.swing.JFrame {
+public class FrmDodajRaspored extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmDodajRaspored
      */
-    public FrmDodajRaspored() {
+    public FrmDodajRaspored(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -52,8 +53,6 @@ public class FrmDodajRaspored extends javax.swing.JFrame {
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnKreiraj.setText("Kreiraj");
 

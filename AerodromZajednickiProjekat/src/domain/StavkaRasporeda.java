@@ -114,7 +114,7 @@ public class StavkaRasporeda implements GenericEntity {
         StringBuilder sb = new StringBuilder();
         sb.append("'").append(rasporedId).append("', ")
                 .append("'").append(vreme).append("', ")
-                .append(let);
+                .append(let).append("'");
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -122,7 +122,6 @@ public class StavkaRasporeda implements GenericEntity {
 
     @Override
     public void setId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

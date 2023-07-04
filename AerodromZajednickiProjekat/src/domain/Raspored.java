@@ -83,7 +83,7 @@ public class Raspored implements GenericEntity {
     public String getInsertValues() {
         StringBuilder sb = new StringBuilder();
         sb.append("'").append(datum).append("', ")
-                .append("'").append(stavke);
+                .append("'").append(stavke).append("'");
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -91,7 +91,7 @@ public class Raspored implements GenericEntity {
 
     @Override
     public void setId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.rasporedId = id;
     }
 
     @Override
@@ -129,7 +129,7 @@ public class Raspored implements GenericEntity {
 
     @Override
     public String getSearchCase() {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

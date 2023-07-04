@@ -154,7 +154,7 @@ public class Let implements GenericEntity {
                 .append("'").append(mestoPolaska).append("', ")
                 .append(avion.getAvionId()).append(", ")
                 .append(destinacija.getDestinacijaId()).append(", ")
-                .append(pilot.getPilotId());
+                .append(pilot.getPilotId()).append("'");
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -162,7 +162,7 @@ public class Let implements GenericEntity {
 
     @Override
     public void setId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.letId = id;
     }
 
     @Override

@@ -118,7 +118,7 @@ public class Controller {
 
     public List<Avion> vratiListuAviona() throws Exception {
         UcitajListuAviona operation = new UcitajListuAviona();
-        operation.execute(new Let());
+        operation.execute(new Avion());
         return operation.vratiListuAviona();
     }
 

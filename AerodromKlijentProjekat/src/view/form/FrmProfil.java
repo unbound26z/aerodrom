@@ -14,9 +14,10 @@ import javax.swing.JTextField;
  *
  * @author Nikola
  */
-public class FrmProfil extends javax.swing.JFrame {
+public class FrmProfil extends javax.swing.JDialog {
 
-    public FrmProfil() {
+    public FrmProfil(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -35,7 +36,7 @@ public class FrmProfil extends javax.swing.JFrame {
         txtIme = new javax.swing.JTextField();
         txtPrezime = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblIme.setText("Ime:");
 

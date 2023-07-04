@@ -12,12 +12,13 @@ import javax.swing.JTextField;
  *
  * @author Nikola
  */
-public class FrmDodajAvion extends javax.swing.JFrame {
+public class FrmDodajAvion extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmAvion
      */
-    public FrmDodajAvion() {
+    public FrmDodajAvion(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -42,7 +43,7 @@ public class FrmDodajAvion extends javax.swing.JFrame {
         txtAviokompanija = new javax.swing.JTextField();
         btnDodaj = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Naziv:");
 

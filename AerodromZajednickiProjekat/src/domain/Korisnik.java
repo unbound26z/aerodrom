@@ -108,7 +108,7 @@ public class Korisnik implements GenericEntity {
         sb.append("'").append(email).append("', ")
                 .append("'").append(sifra).append("', ")
                 .append("'").append(ime).append("', ")
-                .append(prezime);
+                .append(prezime).append("'");
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -116,7 +116,6 @@ public class Korisnik implements GenericEntity {
 
     @Override
     public void setId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

@@ -127,7 +127,7 @@ public class Pilot implements GenericEntity {
         sb.append("'").append(ime).append("', ")
                 .append("'").append(prezime).append("', ")
                 .append(datumRodjenja).append(", ")
-                .append(radniStaz);
+                .append(radniStaz).append("'");
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -135,7 +135,7 @@ public class Pilot implements GenericEntity {
 
     @Override
     public void setId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.pilotId = id;
     }
 
     @Override

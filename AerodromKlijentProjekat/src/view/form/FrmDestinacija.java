@@ -13,13 +13,15 @@ import javax.swing.JTextField;
  *
  * @author Nikola
  */
-public class FrmDestinacija extends javax.swing.JFrame {
+public class FrmDestinacija extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmDestinacija
      */
-    public FrmDestinacija() {
+    public FrmDestinacija(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        
     }
 
     /**
@@ -37,7 +39,7 @@ public class FrmDestinacija extends javax.swing.JFrame {
         txtDestinacija = new javax.swing.JTextField();
         btnNadji = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblDestinacija.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,29 +112,29 @@ public class FrmDestinacija extends javax.swing.JFrame {
     public JButton getBtnNadji() {
         return btnNadji;
     }
-
+    
     public void setBtnNadji(JButton btnNadji) {
         this.btnNadji = btnNadji;
     }
-
+    
     public JTable getTblDestinacija() {
         return tblDestinacija;
     }
-
+    
     public void setTblDestinacija(JTable tblDestinacija) {
         this.tblDestinacija = tblDestinacija;
     }
-
+    
     public JTextField getTxtDestinacija() {
         return txtDestinacija;
     }
-
+    
     public void setTxtDestinacija(JTextField txtDestinacija) {
         this.txtDestinacija = txtDestinacija;
     }
-
+    
     public void dodajBtnNadjiListener(ActionListener actionListener) {
         btnNadji.addActionListener(actionListener);
     }
-
+    
 }

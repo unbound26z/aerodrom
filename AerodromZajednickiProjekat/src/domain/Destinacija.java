@@ -98,7 +98,7 @@ public class Destinacija implements GenericEntity {
     public String getInsertValues() {
         StringBuilder sb = new StringBuilder();
         sb.append("'").append(nazivDestinacije).append("', ")
-                .append("'").append(drzava);
+                .append("'").append(drzava).append("'");
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -106,7 +106,7 @@ public class Destinacija implements GenericEntity {
 
     @Override
     public void setId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.destinacijaId = id;
     }
 
     @Override

@@ -13,12 +13,13 @@ import javax.swing.JTextField;
  *
  * @author Nikola
  */
-public class FrmDodajLet extends javax.swing.JFrame {
+public class FrmDodajLet extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmLet
      */
-    public FrmDodajLet() {
+    public FrmDodajLet(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -45,7 +46,7 @@ public class FrmDodajLet extends javax.swing.JFrame {
         cbPolazak = new javax.swing.JComboBox<>();
         cbDolazak = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Mesto polaska:");
 
@@ -160,8 +161,6 @@ public class FrmDodajLet extends javax.swing.JFrame {
         btnDodaj.addActionListener(actionListener);
     }
 
-
-    
     public JButton getBtnDodaj() {
         return btnDodaj;
     }

@@ -12,12 +12,13 @@ import javax.swing.JTextField;
  *
  * @author Nikola
  */
-public class FrmDodajDestinaciju extends javax.swing.JFrame {
+public class FrmDodajDestinaciju extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmDodajDestinaciju
      */
-    public FrmDodajDestinaciju() {
+    public FrmDodajDestinaciju(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -37,7 +38,7 @@ public class FrmDodajDestinaciju extends javax.swing.JFrame {
         btnDodaj = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Naziv:");
 
@@ -89,7 +90,6 @@ public class FrmDodajDestinaciju extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
@@ -104,9 +104,6 @@ public class FrmDodajDestinaciju extends javax.swing.JFrame {
         btnDodaj.addActionListener(actionListener);
     }
 
-
-    
-    
     public JButton getBtnDodaj() {
         return btnDodaj;
     }
@@ -138,7 +135,5 @@ public class FrmDodajDestinaciju extends javax.swing.JFrame {
     public void setTxtNaziv(JTextField txtNaziv) {
         this.txtNaziv = txtNaziv;
     }
-
-
 
 }

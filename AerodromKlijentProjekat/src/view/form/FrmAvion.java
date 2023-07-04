@@ -13,12 +13,13 @@ import javax.swing.JTextField;
  *
  * @author Nikola
  */
-public class FrmAvion extends javax.swing.JFrame {
+public class FrmAvion extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmAvion
      */
-    public FrmAvion() {
+    public FrmAvion(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -37,7 +38,7 @@ public class FrmAvion extends javax.swing.JFrame {
         txtAvion = new javax.swing.JTextField();
         btnNadji = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblAvion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -66,12 +66,12 @@ public class ViewCoordinator {
     }
 
     public void openFrmAvion() {
-        avionController = new AvionController(new FrmAvion());
+        avionController = new AvionController(new FrmAvion(mainController.getFrmMain(), true));
         avionController.openForm();
     }
 
     public void openFrmProfil() {
-        profilController = new ProfilController(new FrmProfil());
+        profilController = new ProfilController(new FrmProfil(mainController.getFrmMain(), true));
         profilController.openForm();
     }
 
@@ -81,32 +81,32 @@ public class ViewCoordinator {
     }
 
     public void openFrmDestinacija() {
-        destinacijaController = new DestinacijaController(new FrmDestinacija());
+        destinacijaController = new DestinacijaController(new FrmDestinacija(mainController.getFrmMain(), true));
         destinacijaController.openForm();
     }
 
     public void openFrmLet() {
-        letController = new LetController(new FrmLet());
+        letController = new LetController(new FrmLet(mainController.getFrmMain(), true));
         letController.openForm();
     }
 
     public void openFrmDodajAvion() {
-        dodajAvionController = new DodajAvionController(new FrmDodajAvion());
+        dodajAvionController = new DodajAvionController(new FrmDodajAvion(mainController.getFrmMain(), true));
         dodajAvionController.openForm();
     }
 
     public void openFrmDodajDestinaciju() {
-        dodajDestinacijuController = new DodajDestinacijuController(new FrmDodajDestinaciju());
+        dodajDestinacijuController = new DodajDestinacijuController(new FrmDodajDestinaciju(mainController.getFrmMain(), true));
         dodajDestinacijuController.openForm();
     }
 
     public void openFrmDodajLet() {
-        dodajLetController = new DodajLetController(new FrmDodajLet());
+        dodajLetController = new DodajLetController(new FrmDodajLet(mainController.getFrmMain(), true));
         dodajLetController.openForm();
     }
 
     public void openFrmDodajRaspored() {
-        dodajRasporedController = new DodajRasporedController(new FrmDodajRaspored());
+        dodajRasporedController = new DodajRasporedController(new FrmDodajRaspored(mainController.getFrmMain(), true));
         dodajRasporedController.openForm();
     }
 
