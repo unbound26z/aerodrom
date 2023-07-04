@@ -5,6 +5,7 @@
 package domain;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +16,7 @@ import java.util.Objects;
  */
 public class Pilot implements GenericEntity {
 
-    private int pilotId;
+    private Long pilotId;
     private String ime;
     private String prezime;
     private Date datumRodjenja;
@@ -62,11 +63,11 @@ public class Pilot implements GenericEntity {
         return "Pilot{" + "pilotId=" + pilotId + ", ime=" + ime + ", prezime=" + prezime + ", datumRodjenja=" + datumRodjenja + ", radniStaz=" + radniStaz + '}';
     }
 
-    public int getPilotId() {
+    public Long getPilotId() {
         return pilotId;
     }
 
-    public void setPilotId(int pilotId) {
+    public void setPilotId(Long pilotId) {
         this.pilotId = pilotId;
     }
 
@@ -102,7 +103,7 @@ public class Pilot implements GenericEntity {
         this.radniStaz = radniStaz;
     }
 
-    public Pilot(int pilotId, String ime, String prezime, Date datumRodjenja, int radniStaz) {
+    public Pilot(Long pilotId, String ime, String prezime, Date datumRodjenja, int radniStaz) {
         this.pilotId = pilotId;
         this.ime = ime;
         this.prezime = prezime;
@@ -117,12 +118,19 @@ public class Pilot implements GenericEntity {
 
     @Override
     public String getColumnNamesForInsert() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "ime, prezime, datumRodjenja, radniStaz";
     }
 
     @Override
     public String getInsertValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+        sb.append("'").append(ime).append("', ")
+                .append("'").append(prezime).append("', ")
+                .append(datumRodjenja).append(", ")
+                .append(radniStaz);
+
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
     @Override
@@ -132,7 +140,18 @@ public class Pilot implements GenericEntity {
 
     @Override
     public List<GenericEntity> getList(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<GenericEntity> list = new ArrayList<>();
+        while (rs.next()) {
+            Pilot p = new Pilot();
+            p.setPilotId(rs.getLong("p.pilotId"));
+            p.setDatumRodjenja(rs.getDate("p.datumRodjenja"));
+            p.setIme(rs.getString("p.ime"));
+            p.setPrezime(rs.getString("p.getPrezime"));
+            p.setRadniStaz(rs.getInt("p.radniStaz"));
+
+            list.add(p);
+        }
+        return list;
     }
 
     @Override
@@ -147,11 +166,11 @@ public class Pilot implements GenericEntity {
 
     @Override
     public String getObjectCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "pilotId=" + pilotId;
     }
 
     @Override
     public String getSearchCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "prezime LIKE '" + prezime + "%'";
     }
 }

@@ -5,6 +5,7 @@
 package domain;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +15,7 @@ import java.util.Objects;
  */
 public class Let implements GenericEntity {
 
-    private int letId;
+    private Long letId;
     private int trajanje;
     private int cena;
     private Destinacija mestoPolaska;
@@ -66,11 +67,11 @@ public class Let implements GenericEntity {
         return "Let{" + "letId=" + letId + ", trajanje=" + trajanje + ", cena=" + cena + ", mestoPolaska=" + mestoPolaska + ", avion=" + avion + ", destinacija=" + destinacija + ", pilot=" + pilot + '}';
     }
 
-    public int getLetId() {
+    public Long getLetId() {
         return letId;
     }
 
-    public void setLetId(int letId) {
+    public void setLetId(Long letId) {
         this.letId = letId;
     }
 
@@ -122,7 +123,7 @@ public class Let implements GenericEntity {
         this.pilot = pilot;
     }
 
-    public Let(int letId, int trajanje, int cena, Destinacija mestoPolaska, Avion avion, Destinacija destinacija, Pilot pilot) {
+    public Let(Long letId, int trajanje, int cena, Destinacija mestoPolaska, Avion avion, Destinacija destinacija, Pilot pilot) {
         this.letId = letId;
         this.trajanje = trajanje;
         this.cena = cena;
@@ -142,12 +143,21 @@ public class Let implements GenericEntity {
 
     @Override
     public String getColumnNamesForInsert() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "trajanje, cena, mestoPolaska, avionId, destinacijaId, pilotId";
     }
 
     @Override
     public String getInsertValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+        sb.append("'").append(trajanje).append("', ")
+                .append("'").append(cena).append("', ")
+                .append("'").append(mestoPolaska).append("', ")
+                .append(avion.getAvionId()).append(", ")
+                .append(destinacija.getDestinacijaId()).append(", ")
+                .append(pilot.getPilotId());
+
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
     @Override
@@ -157,22 +167,72 @@ public class Let implements GenericEntity {
 
     @Override
     public List<GenericEntity> getList(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<GenericEntity> list = new ArrayList<>();
+        while (rs.next()) {
+            Let t = new Let();
+            t.setId(rs.getLong("id"));
+            Pilot p = new Pilot();
+            Avion a = new Avion();
+            Destinacija d = new Destinacija();
+            Destinacija z = new Destinacija();
+
+            p.setPilotId(rs.getLong("p.pilotId"));
+            p.setDatumRodjenja(rs.getDate("p.datumRodjenja"));
+            p.setIme(rs.getString("p.ime"));
+            p.setPrezime(rs.getString("p.getPrezime"));
+            p.setRadniStaz(rs.getInt("p.radniStaz"));
+
+            a.setAvionId(rs.getLong("a.avionId"));
+            a.setAviokompanija(rs.getString("a.aviokompanija"));
+            a.setBrojSedista(rs.getInt("a.brojSedista"));
+            a.setGodinaProizvodnje(rs.getInt("a.godinaProizvodnje"));
+            a.setMestoProizvodnje(rs.getString("a.mestoProizvodnje"));
+            a.setNazivAviona(rs.getString("a.nazivAviona"));
+
+            d.setDestinacijaId(rs.getLong("d.id"));
+            d.setDrzava(rs.getString("d.drzava"));
+            d.setNazivDestinacije(rs.getString("d.nazivDestinacije"));
+
+            z.setDestinacijaId(rs.getLong("z.id"));
+            z.setDrzava(rs.getString("z.drzava"));
+            z.setNazivDestinacije(rs.getString("z.nazivDestinacije"));
+
+            t.setDestinacija(d);
+            t.setAvion(a);
+            t.setPilot(p);
+            t.setMestoPolaska(z);
+
+            t.setCena(rs.getInt("l.cena"));
+            t.setLetId(rs.getLong("l.letId"));
+            t.setTrajanje(rs.getInt("l.trajanje"));
+
+            list.add(t);
+        }
+        return list;
     }
 
     @Override
     public String getJoinCondition() {
-        return "";
+        return "l LEFT JOIN avion a ON (l.avionId=a.avionId) LEFT JOIN pilot p ON (l.pilotId=p.pilotId) LEFT JOIN destinacija z ON (l.mestoPolaska=z.destinacijaId) LEFT JOIN destinacija d ON (l.destinacijaId=d.destinacijaId)";
     }
 
     @Override
     public String getUpdateValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("trajanje=").append("'").append(trajanje).append("', ")
+                .append("cena=").append("'").append(cena).append("', ")
+                .append("mestoPolaska=").append("'").append(mestoPolaska.getDestinacijaId()).append("', ")
+                .append("destinacija=").append(destinacija.getDestinacijaId()).append(", ")
+                .append("avion=").append(avion.getAvionId()).append(", ")
+                .append("pilot=").append(pilot.getPilotId());
+
+        return sb.toString();
     }
 
     @Override
     public String getObjectCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "letId=" + letId;
     }
 
     @Override

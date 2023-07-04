@@ -5,6 +5,7 @@
 package domain;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +15,7 @@ import java.util.Objects;
  */
 public class Avion implements GenericEntity {
 
-    private int avionId;
+    private Long avionId;
     private String nazivAviona;
     private int brojSedista;
     private String mestoProizvodnje;
@@ -62,11 +63,11 @@ public class Avion implements GenericEntity {
         return Objects.equals(this.aviokompanija, other.aviokompanija);
     }
 
-    public int getAvionId() {
+    public Long getAvionId() {
         return avionId;
     }
 
-    public void setAvionId(int avionId) {
+    public void setAvionId(Long avionId) {
         this.avionId = avionId;
     }
 
@@ -113,7 +114,7 @@ public class Avion implements GenericEntity {
     public Avion() {
     }
 
-    public Avion(int avionId, String nazivAviona, int brojSedista, String mestoProizvodnje, int godinaProizvodnje, String aviokompanija) {
+    public Avion(Long avionId, String nazivAviona, int brojSedista, String mestoProizvodnje, int godinaProizvodnje, String aviokompanija) {
         this.avionId = avionId;
         this.nazivAviona = nazivAviona;
         this.brojSedista = brojSedista;
@@ -129,12 +130,20 @@ public class Avion implements GenericEntity {
 
     @Override
     public String getColumnNamesForInsert() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "nazivAviona, brojSedista, mestoProizvodnje, godinaProizvodnje, aviokompanija";
     }
 
     @Override
     public String getInsertValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+        sb.append("'").append(nazivAviona).append("', ")
+                .append("'").append(brojSedista).append("', ")
+                .append(mestoProizvodnje).append(", ")
+                .append(godinaProizvodnje).append(", ")
+                .append(aviokompanija);
+
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
     @Override
@@ -144,7 +153,19 @@ public class Avion implements GenericEntity {
 
     @Override
     public List<GenericEntity> getList(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<GenericEntity> list = new ArrayList<>();
+        while (rs.next()) {
+            Avion m = new Avion();
+            m.setAvionId(rs.getLong("m.avionId"));
+            m.setBrojSedista(rs.getInt("m.brojSedista"));
+            m.setGodinaProizvodnje(rs.getInt("m.godinaProizvodnje"));
+            m.setMestoProizvodnje("m.mestoProizvodnje");
+            m.setNazivAviona(rs.getString("m.nazivAviona"));
+            m.setAviokompanija(rs.getString("m.aviokompanija"));
+
+            list.add(m);
+        }
+        return list;
     }
 
     @Override
@@ -154,17 +175,25 @@ public class Avion implements GenericEntity {
 
     @Override
     public String getUpdateValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("nazivAviona=").append("'").append(nazivAviona).append("', ")
+                .append("brojSedista=").append("'").append(brojSedista).append("', ")
+                .append("mestoProizvodnje=").append(mestoProizvodnje).append(", ")
+                .append("godinaProizvodnje=").append(godinaProizvodnje).append(", ")
+                .append("aviokompanija=").append(aviokompanija);
+
+        return sb.toString();
     }
 
     @Override
     public String getObjectCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "avionId=" + avionId;
     }
 
     @Override
     public String getSearchCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "nazivAviona LIKE '" + nazivAviona + "%'";
     }
 
 }

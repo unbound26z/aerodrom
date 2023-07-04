@@ -16,7 +16,7 @@ import java.util.Objects;
  */
 public class Raspored implements GenericEntity {
 
-    private int rasporedId;
+    private Long rasporedId;
     private Date datum;
     private List<StavkaRasporeda> stavke;
 
@@ -43,11 +43,11 @@ public class Raspored implements GenericEntity {
         return "Raspored{" + "rasporedId=" + rasporedId + ", datum=" + datum + '}';
     }
 
-    public int getRasporedId() {
+    public Long getRasporedId() {
         return rasporedId;
     }
 
-    public void setRasporedId(int rasporedId) {
+    public void setRasporedId(Long rasporedId) {
         this.rasporedId = rasporedId;
     }
 
@@ -63,7 +63,7 @@ public class Raspored implements GenericEntity {
         this.stavke = new ArrayList<>();
     }
 
-    public Raspored(int rasporedId, Date datum) {
+    public Raspored(Long rasporedId, Date datum) {
         this.rasporedId = rasporedId;
         this.datum = datum;
         this.stavke = new ArrayList<>();
@@ -76,12 +76,17 @@ public class Raspored implements GenericEntity {
 
     @Override
     public String getColumnNamesForInsert() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "datum, stavke";
     }
 
     @Override
     public String getInsertValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+        sb.append("'").append(datum).append("', ")
+                .append("'").append(stavke);
+
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
     @Override
@@ -91,7 +96,16 @@ public class Raspored implements GenericEntity {
 
     @Override
     public List<GenericEntity> getList(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<GenericEntity> list = new ArrayList<>();
+
+        while (rs.next()) {
+            Raspored m = new Raspored();
+            m.setId(rs.getLong("r.rasporedId"));
+            m.setDatum(rs.getDate("r.datum"));
+
+            list.add(m);
+        }
+        return list;
     }
 
     @Override
@@ -101,17 +115,21 @@ public class Raspored implements GenericEntity {
 
     @Override
     public String getUpdateValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("datum=").append("'").append(datum);
+
+        return sb.toString();
     }
 
     @Override
     public String getObjectCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "rasporedId=" + rasporedId;
     }
 
     @Override
     public String getSearchCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

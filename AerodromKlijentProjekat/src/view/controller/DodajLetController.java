@@ -47,7 +47,7 @@ public class DodajLetController {
                     Avion avion = (Avion) frm.getCbAvion().getSelectedItem();
                     Pilot pilot = (Pilot) frm.getCbPilot().getSelectedItem();
 
-                    Communication.getInstance().zapamtiLet(new Let(0, trajanje, cena, mestoPolaska, avion, mestoDolaska, pilot));
+                    Communication.getInstance().zapamtiLet(new Let(Long.valueOf(0), trajanje, cena, mestoPolaska, avion, mestoDolaska, pilot));
                     JOptionPane.showMessageDialog(frm, "Let uspesno kreiran!");
                 } catch (SocketException se) {
                     JOptionPane.showMessageDialog(frm, "Server zatvoren: " + se.getMessage());

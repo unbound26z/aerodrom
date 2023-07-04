@@ -70,8 +70,8 @@ public class LetController {
                     return;
                 }
                 try {
-                    Let let = new Let(0, 0, 0, null, null, null, null);
-                    let.setLetId(Integer.parseInt(letID));
+                    Let let = new Let(Long.valueOf(0), 0, 0, null, null, null, null);
+                    let.setLetId(Long.parseLong(letID));
                     List<Let> letovi = Communication.getInstance().nadjiLetove(let);
                     if (letovi.isEmpty()) {
                         JOptionPane.showMessageDialog(frm, "Ne postoji takav let!");

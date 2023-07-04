@@ -91,12 +91,17 @@ public class Destinacija implements GenericEntity {
 
     @Override
     public String getColumnNamesForInsert() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "nazivDestinacije, drzava";
     }
 
     @Override
     public String getInsertValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+        sb.append("'").append(nazivDestinacije).append("', ")
+                .append("'").append(drzava);
+
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
     @Override
@@ -125,17 +130,22 @@ public class Destinacija implements GenericEntity {
 
     @Override
     public String getUpdateValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("nazivDestinacije=").append("'").append(nazivDestinacije).append("', ")
+                .append("drzava=").append("'").append(drzava);
+
+        return sb.toString();
     }
 
     @Override
     public String getObjectCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "destinacijaId=" + destinacijaId;
     }
 
     @Override
     public String getSearchCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "nazivDestinacije LIKE '" + nazivDestinacije + "%'";
     }
 
 }

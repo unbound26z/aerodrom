@@ -6,6 +6,8 @@ package domain;
 
 import java.sql.ResultSet;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,9 +17,9 @@ import java.util.Objects;
  */
 public class StavkaRasporeda implements GenericEntity {
 
-    private int rBr;
-    private Raspored raspored;
-    private LocalTime vreme;
+    private Long rBr;
+    private Long rasporedId;
+    private Date vreme;
     private Let let;
 
     @Override
@@ -41,7 +43,7 @@ public class StavkaRasporeda implements GenericEntity {
         if (this.rBr != other.rBr) {
             return false;
         }
-        if (!Objects.equals(this.raspored, other.raspored)) {
+        if (this.rasporedId != other.rasporedId) {
             return false;
         }
         if (!Objects.equals(this.vreme, other.vreme)) {
@@ -52,30 +54,30 @@ public class StavkaRasporeda implements GenericEntity {
 
     @Override
     public String toString() {
-        return "StavkaRasporeda{" + "rBr=" + rBr + ", raspored=" + raspored + ", vreme=" + vreme + ", let=" + let + '}';
+        return "StavkaRasporeda{" + "rBr=" + rBr + ", raspored=" + rasporedId + ", vreme=" + vreme + ", let=" + let + '}';
     }
 
-    public int getrBr() {
+    public Long getrBr() {
         return rBr;
     }
 
-    public void setrBr(int rBr) {
+    public void setrBr(Long rBr) {
         this.rBr = rBr;
     }
 
-    public Raspored getRaspored() {
-        return raspored;
+    public Long getRaspored() {
+        return rasporedId;
     }
 
-    public void setRaspored(Raspored raspored) {
-        this.raspored = raspored;
+    public void setRaspored(Long raspored) {
+        this.rasporedId = raspored;
     }
 
-    public LocalTime getVreme() {
+    public Date getVreme() {
         return vreme;
     }
 
-    public void setVreme(LocalTime vreme) {
+    public void setVreme(Date vreme) {
         this.vreme = vreme;
     }
 
@@ -90,9 +92,9 @@ public class StavkaRasporeda implements GenericEntity {
     public StavkaRasporeda() {
     }
 
-    public StavkaRasporeda(int rBr, Raspored raspored, LocalTime vreme, Let let) {
+    public StavkaRasporeda(Long rBr, Long raspored, Date vreme, Let let) {
         this.rBr = rBr;
-        this.raspored = raspored;
+        this.rasporedId = raspored;
         this.vreme = vreme;
         this.let = let;
     }
@@ -104,12 +106,18 @@ public class StavkaRasporeda implements GenericEntity {
 
     @Override
     public String getColumnNamesForInsert() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "rasporedId, vreme, let";
     }
 
     @Override
     public String getInsertValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+        sb.append("'").append(rasporedId).append("', ")
+                .append("'").append(vreme).append("', ")
+                .append(let);
+
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
     @Override
@@ -119,12 +127,26 @@ public class StavkaRasporeda implements GenericEntity {
 
     @Override
     public List<GenericEntity> getList(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<GenericEntity> list = new ArrayList<>();
+        while (rs.next()) {
+            StavkaRasporeda s = new StavkaRasporeda();
+            s.setrBr(rs.getLong("s.rBr"));
+            s.setRaspored(rs.getLong("s.rasporedId"));
+            s.setVreme(rs.getDate("s.vreme"));
+
+            Let l = new Let();
+            l.setLetId(rs.getLong("l.letId"));
+
+            s.setLet(l);
+
+            list.add(s);
+        }
+        return list;
     }
 
     @Override
     public String getJoinCondition() {
-        return "";
+        return "s LEFT JOIN let l ON (s.letId=l.letId)";
     }
 
     @Override

@@ -70,7 +70,7 @@ public class AvionController {
                     return;
                 }
                 try {
-                    Avion avion = new Avion(0, null, 0, null, 0, null);
+                    Avion avion = new Avion(new Long(0), null, 0, null, 0, null);
                     avion.setNazivAviona(naziv);
                     List<Avion> avioni = Communication.getInstance().nadjiAvione(avion);
                     if (avioni.isEmpty()) {

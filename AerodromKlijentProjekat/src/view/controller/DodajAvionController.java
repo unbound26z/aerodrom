@@ -41,7 +41,7 @@ public class DodajAvionController {
                     String mestoProizvodnje = frmDodajAvion.getTxtMestoProizvodnje().getText().trim();
                     int godinaProizvodnje = Integer.parseInt(frmDodajAvion.getTxtGodinaProizvodnje().getText().trim());
                     String aviokompanija = frmDodajAvion.getTxtAviokompanija().getText().trim();
-                    Communication.getInstance().zapamtiAvion(new Avion(0, name, brojSedista, mestoProizvodnje, godinaProizvodnje, aviokompanija));
+                    Communication.getInstance().zapamtiAvion(new Avion(new Long(0), name, brojSedista, mestoProizvodnje, godinaProizvodnje, aviokompanija));
                     JOptionPane.showMessageDialog(frmDodajAvion, "Avion uspesno kreiran!");
                     ViewCoordinator.getInstance().refreshAvionView();
                 } catch (SocketException se) {

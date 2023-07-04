@@ -99,12 +99,19 @@ public class Korisnik implements GenericEntity {
 
     @Override
     public String getColumnNamesForInsert() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "email, sifra, ime, prezime";
     }
 
     @Override
     public String getInsertValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder();
+        sb.append("'").append(email).append("', ")
+                .append("'").append(sifra).append("', ")
+                .append("'").append(ime).append("', ")
+                .append(prezime);
+
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
     @Override
@@ -139,12 +146,12 @@ public class Korisnik implements GenericEntity {
 
     @Override
     public String getObjectCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "email=" + email;
     }
 
     @Override
     public String getSearchCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "email LIKE '" + email + "%'";
     }
 
 }
