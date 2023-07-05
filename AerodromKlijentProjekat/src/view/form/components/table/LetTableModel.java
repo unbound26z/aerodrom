@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
 public class LetTableModel extends AbstractTableModel {
 
     private List<Let> letovi;
-    private String[] columnNames = {"ID", "Trajanje", "Cena", "Mesto polaska"};
+    private String[] columnNames = {"ID", "Trajanje", "Cena", "Mesto polaska", "Avion", "Destinacija", "Pilot"};
 
     public LetTableModel(List<Let> letovi) {
         this.letovi = letovi;
@@ -54,7 +54,14 @@ public class LetTableModel extends AbstractTableModel {
             case 2:
                 return letovi.get(i).getCena();
             case 3:
-                return letovi.get(i).getMestoPolaska();
+                return letovi.get(i).getMestoPolaska().getNazivDestinacije();
+            case 4:
+                return letovi.get(i).getAvion().getNazivAviona();
+            case 5:
+                return letovi.get(i).getDestinacija().getNazivDestinacije();
+            case 6:
+                return letovi.get(i).getPilot().getPrezime();
+
             default:
                 return "n/a";
         }

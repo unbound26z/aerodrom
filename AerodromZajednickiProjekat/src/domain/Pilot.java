@@ -143,11 +143,11 @@ public class Pilot implements GenericEntity {
         List<GenericEntity> list = new ArrayList<>();
         while (rs.next()) {
             Pilot p = new Pilot();
-            p.setPilotId(rs.getLong("p.pilotId"));
-            p.setDatumRodjenja(rs.getDate("p.datumRodjenja"));
-            p.setIme(rs.getString("p.ime"));
-            p.setPrezime(rs.getString("p.getPrezime"));
-            p.setRadniStaz(rs.getInt("p.radniStaz"));
+            p.setPilotId(rs.getLong("pilotId"));
+            p.setDatumRodjenja(rs.getDate("datumRodjenja"));
+            p.setIme(rs.getString("ime"));
+            p.setPrezime(rs.getString("prezime"));
+            p.setRadniStaz(rs.getInt("radniStaz"));
 
             list.add(p);
         }

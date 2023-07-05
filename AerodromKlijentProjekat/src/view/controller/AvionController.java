@@ -55,8 +55,7 @@ public class AvionController {
         }
         AvionTableModel atm = new AvionTableModel(avioni);
         frmAvion.getTblAvion().setModel(atm);
-        TableColumn column = frmAvion.getTblAvion().getColumnModel().getColumn(2);
-        column.setPreferredWidth(200);
+  
 
     }
 

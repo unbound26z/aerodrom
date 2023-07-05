@@ -39,6 +39,7 @@ public class FrmMain extends javax.swing.JFrame {
         lblKorisnik = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jmiDodajRaspored = new javax.swing.JMenuItem();
         jmiRaspored = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jmiDodajAvion = new javax.swing.JMenuItem();
@@ -51,6 +52,7 @@ public class FrmMain extends javax.swing.JFrame {
         jmiDestinacija = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jmiDodajLet = new javax.swing.JMenuItem();
+        jmiLet = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jmiProfil = new javax.swing.JMenuItem();
 
@@ -61,6 +63,11 @@ public class FrmMain extends javax.swing.JFrame {
         jMenu5.setText("jMenu5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Dobrodosli, ");
@@ -69,6 +76,9 @@ public class FrmMain extends javax.swing.JFrame {
         lblKorisnik.setText("Korisnik");
 
         jMenu1.setText("Raspored");
+
+        jmiDodajRaspored.setText("Dodaj");
+        jMenu1.add(jmiDodajRaspored);
 
         jmiRaspored.setText("Pregled ");
         jmiRaspored.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +130,9 @@ public class FrmMain extends javax.swing.JFrame {
         jmiDodajLet.setText("Dodaj");
         jMenu7.add(jmiDodajLet);
 
+        jmiLet.setText("Pregled");
+        jMenu7.add(jmiLet);
+
         jMenuBar1.add(jMenu7);
 
         jMenu6.setText("Profil");
@@ -163,15 +176,7 @@ public class FrmMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiRasporedActionPerformed
 
-    public JLabel getLblLider() {
-        return lblKorisnik;
-    }
-
-    public void setLblLider(JLabel lblKorisnik) {
-        this.lblKorisnik = lblKorisnik;
-    }
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         try {
             Korisnik k = (Korisnik) ViewCoordinator.getInstance().getParam("Korisnik");
@@ -181,6 +186,14 @@ public class FrmMain extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }//GEN-LAST:event_formWindowClosing
+
+    public JLabel getLblLider() {
+        return lblKorisnik;
+    }
+
+    public void setLblLider(JLabel lblKorisnik) {
+        this.lblKorisnik = lblKorisnik;
     }
 
     /**
@@ -205,6 +218,8 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiDodajDestinaciju;
     private javax.swing.JMenuItem jmiDodajLet;
     private javax.swing.JMenuItem jmiDodajPilota;
+    private javax.swing.JMenuItem jmiDodajRaspored;
+    private javax.swing.JMenuItem jmiLet;
     private javax.swing.JMenuItem jmiPilot;
     private javax.swing.JMenuItem jmiProfil;
     private javax.swing.JMenuItem jmiRaspored;
@@ -217,6 +232,10 @@ public class FrmMain extends javax.swing.JFrame {
 
     public void dodajJmiRasporedListener(ActionListener actionListener) {
         jmiRaspored.addActionListener(actionListener);
+    }
+
+    public void dodajJmiDodajRasporedListener(ActionListener actionListener) {
+        jmiDodajRaspored.addActionListener(actionListener);
     }
 
     public void dodajJmiAvionListener(ActionListener actionListener) {
@@ -241,6 +260,10 @@ public class FrmMain extends javax.swing.JFrame {
 
     public void dodajJmiDodajLetListener(ActionListener actionListener) {
         jmiDodajLet.addActionListener(actionListener);
+    }
+
+    public void dodajJmiLetListener(ActionListener actionListener) {
+        jmiLet.addActionListener(actionListener);
     }
 
     public void dodajJmiProfilListener(ActionListener actionListener) {

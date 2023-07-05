@@ -149,12 +149,12 @@ public class Let implements GenericEntity {
     @Override
     public String getInsertValues() {
         StringBuilder sb = new StringBuilder();
-        sb.append("'").append(trajanje).append("', ")
-                .append("'").append(cena).append("', ")
-                .append("'").append(mestoPolaska).append("', ")
+        sb.append("").append(trajanje).append(", ")
+                .append("").append(cena).append(", ")
+                .append("").append(mestoPolaska.getDestinacijaId()).append(", ")
                 .append(avion.getAvionId()).append(", ")
                 .append(destinacija.getDestinacijaId()).append(", ")
-                .append(pilot.getPilotId()).append("'");
+                .append(pilot.getPilotId());
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -170,7 +170,7 @@ public class Let implements GenericEntity {
         List<GenericEntity> list = new ArrayList<>();
         while (rs.next()) {
             Let t = new Let();
-            t.setId(rs.getLong("id"));
+            t.setId(rs.getLong("l.letId"));
             Pilot p = new Pilot();
             Avion a = new Avion();
             Destinacija d = new Destinacija();
@@ -179,7 +179,7 @@ public class Let implements GenericEntity {
             p.setPilotId(rs.getLong("p.pilotId"));
             p.setDatumRodjenja(rs.getDate("p.datumRodjenja"));
             p.setIme(rs.getString("p.ime"));
-            p.setPrezime(rs.getString("p.getPrezime"));
+            p.setPrezime(rs.getString("p.prezime"));
             p.setRadniStaz(rs.getInt("p.radniStaz"));
 
             a.setAvionId(rs.getLong("a.avionId"));
@@ -189,11 +189,11 @@ public class Let implements GenericEntity {
             a.setMestoProizvodnje(rs.getString("a.mestoProizvodnje"));
             a.setNazivAviona(rs.getString("a.nazivAviona"));
 
-            d.setDestinacijaId(rs.getLong("d.id"));
+            d.setDestinacijaId(rs.getLong("d.destinacijaId"));
             d.setDrzava(rs.getString("d.drzava"));
             d.setNazivDestinacije(rs.getString("d.nazivDestinacije"));
 
-            z.setDestinacijaId(rs.getLong("z.id"));
+            z.setDestinacijaId(rs.getLong("z.destinacijaId"));
             z.setDrzava(rs.getString("z.drzava"));
             z.setNazivDestinacije(rs.getString("z.nazivDestinacije"));
 
@@ -237,7 +237,9 @@ public class Let implements GenericEntity {
 
     @Override
     public String getSearchCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return "cena BETWEEN 0 AND '" + cena + "'";
+
     }
 
 }

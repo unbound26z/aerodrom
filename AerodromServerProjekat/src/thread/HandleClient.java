@@ -14,6 +14,7 @@ import domain.Avion;
 import domain.Destinacija;
 import domain.Korisnik;
 import domain.Let;
+import domain.Pilot;
 import domain.Raspored;
 import java.net.Socket;
 import java.util.List;
@@ -45,6 +46,14 @@ public class HandleClient extends Thread {
                         case UCITAJ_LISTU_AVIONA:
                             List<Avion> avioni = Controller.getInstance().vratiListuAviona();
                             response.setResult(avioni);
+                            break;
+                        case UCITAJ_LISTU_RASPOREDA:
+                            List<Raspored> lista = Controller.getInstance().vratiListuRasporeda();
+                            response.setResult(lista);
+                            break;
+                        case UCITAJ_LISTU_PILOTA:
+                            List<Pilot> piloti = Controller.getInstance().vratiListuPilota();
+                            response.setResult(piloti);
                             break;
                         case UCITAJ_LISTU_DESTINACIJA:
                             List<Destinacija> destinacije = Controller.getInstance().vratiListuDestinacija();
@@ -79,6 +88,8 @@ public class HandleClient extends Thread {
                             response.setResult(Controller.getInstance().nadjiDestinacije(trazenaDestinacija));
                             break;
                         case OBRISI_DESTINACIJU:
+                            Destinacija destinacija = (Destinacija) request.getArgument();
+                            Controller.getInstance().obrisiDestinaciju(destinacija);
                             break;
                         case ZAPAMTI_RASPORED:
                             Raspored novRaspored = (Raspored) request.getArgument();
@@ -93,6 +104,10 @@ public class HandleClient extends Thread {
                             k = Controller.getInstance().login(k.getEmail(), k.getSifra(), socket);
                             response.setResult(k);
                             response.setOperation(Operation.LOGIN);
+                            break;
+                        case LOGOUT:
+                            Korisnik kOut = (Korisnik) request.getArgument();
+                            Controller.getInstance().logout(kOut);
                             break;
                         default:
                             throw new AssertionError(request.getOperation().name());

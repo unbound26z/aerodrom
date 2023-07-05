@@ -24,7 +24,7 @@ public class Avion implements GenericEntity {
 
     @Override
     public String toString() {
-        return "Airplane{" + "avionId=" + avionId + ", nazivAviona=" + nazivAviona + ", brojSedista=" + brojSedista + ", mestoProizvodnje=" + mestoProizvodnje + ", godinaProizvodnje=" + godinaProizvodnje + ", aviokompanija=" + aviokompanija + '}';
+        return "Avion{" + "avionId=" + avionId + ", nazivAviona=" + nazivAviona + ", brojSedista=" + brojSedista + ", mestoProizvodnje=" + mestoProizvodnje + ", godinaProizvodnje=" + godinaProizvodnje + ", aviokompanija=" + aviokompanija + '}';
     }
 
     @Override
@@ -156,12 +156,12 @@ public class Avion implements GenericEntity {
         List<GenericEntity> list = new ArrayList<>();
         while (rs.next()) {
             Avion m = new Avion();
-            m.setAvionId(rs.getLong("m.avionId"));
-            m.setBrojSedista(rs.getInt("m.brojSedista"));
-            m.setGodinaProizvodnje(rs.getInt("m.godinaProizvodnje"));
-            m.setMestoProizvodnje("m.mestoProizvodnje");
-            m.setNazivAviona(rs.getString("m.nazivAviona"));
-            m.setAviokompanija(rs.getString("m.aviokompanija"));
+            m.setAvionId(rs.getLong("avionId"));
+            m.setBrojSedista(rs.getInt("brojSedista"));
+            m.setGodinaProizvodnje(rs.getInt("godinaProizvodnje"));
+            m.setMestoProizvodnje(rs.getString("mestoProizvodnje"));
+            m.setNazivAviona(rs.getString("nazivAviona"));
+            m.setAviokompanija(rs.getString("aviokompanija"));
 
             list.add(m);
         }

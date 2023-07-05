@@ -32,17 +32,11 @@ public class FrmRaspored extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txtRaspored = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRaspored = new javax.swing.JTable();
-        btnNadji = new javax.swing.JButton();
-        btnDodaj = new javax.swing.JButton();
-        btnDetalji = new javax.swing.JButton();
+        btnIzmeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setText("Nadji raspored:");
 
         tblRaspored.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -57,49 +51,30 @@ public class FrmRaspored extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tblRaspored);
 
-        btnNadji.setText("Nadji");
-
-        btnDodaj.setText("Dodaj");
-
-        btnDetalji.setText("Detalji");
+        btnIzmeni.setText("Izmeni");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel1)
-                        .addGap(55, 55, 55)
-                        .addComponent(txtRaspored, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnNadji)
-                    .addComponent(btnDodaj)
-                    .addComponent(btnDetalji))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(btnIzmeni)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtRaspored, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNadji))
-                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDodaj)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDetalji)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addGap(68, 68, 68)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(btnIzmeni)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,37 +82,25 @@ public class FrmRaspored extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDetalji;
-    private javax.swing.JButton btnDodaj;
-    private javax.swing.JButton btnNadji;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnIzmeni;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRaspored;
-    private javax.swing.JTextField txtRaspored;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtnDetalji() {
-        return btnDetalji;
+        return btnIzmeni;
     }
 
     public void setBtnDetalji(JButton btnDetalji) {
-        this.btnDetalji = btnDetalji;
+        this.btnIzmeni = btnDetalji;
     }
 
     public JButton getBtnDodaj() {
-        return btnDodaj;
+        return btnIzmeni;
     }
 
-    public void setBtnDodaj(JButton btnDodaj) {
-        this.btnDodaj = btnDodaj;
-    }
-
-    public JButton getBtnNadji() {
-        return btnNadji;
-    }
-
-    public void setBtnNadji(JButton btnNadji) {
-        this.btnNadji = btnNadji;
+    public void setBtnDodaj(JButton btnIzmeni) {
+        this.btnIzmeni = btnIzmeni;
     }
 
     public JTable getTblRaspored() {
@@ -148,24 +111,8 @@ public class FrmRaspored extends javax.swing.JDialog {
         this.tblRaspored = tblRaspored;
     }
 
-    public JTextField getTxtRaspored() {
-        return txtRaspored;
-    }
-
-    public void setTxtRaspored(JTextField txtRaspored) {
-        this.txtRaspored = txtRaspored;
-    }
-
-    public void dodajBtnNadjiListener(ActionListener actionListener) {
-        btnNadji.addActionListener(actionListener);
-    }
-
-    public void dodajBtnDetaljiListener(ActionListener actionListener) {
-        btnDetalji.addActionListener(actionListener);
-    }
-
-    public void dodajBtnDodajListener(ActionListener actionListener) {
-        btnDodaj.addActionListener(actionListener);
+    public void dodajBtnIzmeniListener(ActionListener actionListener) {
+        btnIzmeni.addActionListener(actionListener);
     }
 
 }

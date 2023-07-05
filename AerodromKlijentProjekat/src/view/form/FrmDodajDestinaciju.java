@@ -104,6 +104,10 @@ public class FrmDodajDestinaciju extends javax.swing.JDialog {
         btnDodaj.addActionListener(actionListener);
     }
 
+    public void dodajBtnObrisiDestinaciju(ActionListener actionListener) {
+        btnObrisi.addActionListener(actionListener);
+    }
+
     public JButton getBtnDodaj() {
         return btnDodaj;
     }

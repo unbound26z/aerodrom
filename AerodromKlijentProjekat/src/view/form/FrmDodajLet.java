@@ -66,14 +66,6 @@ public class FrmDodajLet extends javax.swing.JDialog {
 
         txtCena.setText("(dinari)");
 
-        cbPilot.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbAvion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbPolazak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbDolazak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,10 +135,10 @@ public class FrmDodajLet extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
-    private javax.swing.JComboBox<String> cbAvion;
-    private javax.swing.JComboBox<String> cbDolazak;
-    private javax.swing.JComboBox<String> cbPilot;
-    private javax.swing.JComboBox<String> cbPolazak;
+    private javax.swing.JComboBox<Object> cbAvion;
+    private javax.swing.JComboBox<Object> cbDolazak;
+    private javax.swing.JComboBox<Object> cbPilot;
+    private javax.swing.JComboBox<Object> cbPolazak;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -169,35 +161,35 @@ public class FrmDodajLet extends javax.swing.JDialog {
         this.btnDodaj = btnDodaj;
     }
 
-    public JComboBox<String> getCbAvion() {
+    public JComboBox<Object> getCbAvion() {
         return cbAvion;
     }
 
-    public void setCbAvion(JComboBox<String> cbAvion) {
+    public void setCbAvion(JComboBox<Object> cbAvion) {
         this.cbAvion = cbAvion;
     }
 
-    public JComboBox<String> getCbDolazak() {
+    public JComboBox<Object> getCbDolazak() {
         return cbDolazak;
     }
 
-    public void setCbDolazak(JComboBox<String> cbDolazak) {
+    public void setCbDolazak(JComboBox<Object> cbDolazak) {
         this.cbDolazak = cbDolazak;
     }
 
-    public JComboBox<String> getCbPilot() {
+    public JComboBox<Object> getCbPilot() {
         return cbPilot;
     }
 
-    public void setCbPilot(JComboBox<String> cbPilot) {
+    public void setCbPilot(JComboBox<Object> cbPilot) {
         this.cbPilot = cbPilot;
     }
 
-    public JComboBox<String> getCbPolazak() {
+    public JComboBox<Object> getCbPolazak() {
         return cbPolazak;
     }
 
-    public void setCbPolazak(JComboBox<String> cbPolazak) {
+    public void setCbPolazak(JComboBox<Object> cbPolazak) {
         this.cbPolazak = cbPolazak;
     }
 

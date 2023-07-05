@@ -19,7 +19,7 @@ public class StavkaRasporeda implements GenericEntity {
 
     private Long rBr;
     private Long rasporedId;
-    private Date vreme;
+    private String vreme;
     private Let let;
 
     @Override
@@ -73,11 +73,11 @@ public class StavkaRasporeda implements GenericEntity {
         this.rasporedId = raspored;
     }
 
-    public Date getVreme() {
+    public String getVreme() {
         return vreme;
     }
 
-    public void setVreme(Date vreme) {
+    public void setVreme(String vreme) {
         this.vreme = vreme;
     }
 
@@ -92,7 +92,7 @@ public class StavkaRasporeda implements GenericEntity {
     public StavkaRasporeda() {
     }
 
-    public StavkaRasporeda(Long rBr, Long raspored, Date vreme, Let let) {
+    public StavkaRasporeda(Long rBr, Long raspored, String vreme, Let let) {
         this.rBr = rBr;
         this.rasporedId = raspored;
         this.vreme = vreme;
@@ -131,7 +131,7 @@ public class StavkaRasporeda implements GenericEntity {
             StavkaRasporeda s = new StavkaRasporeda();
             s.setrBr(rs.getLong("s.rBr"));
             s.setRaspored(rs.getLong("s.rasporedId"));
-            s.setVreme(rs.getDate("s.vreme"));
+            s.setVreme(rs.getString("s.vreme"));
 
             Let l = new Let();
             l.setLetId(rs.getLong("l.letId"));

@@ -8,6 +8,7 @@ import domain.Avion;
 import domain.Destinacija;
 import domain.Korisnik;
 import domain.Let;
+import domain.Pilot;
 import domain.Raspored;
 import java.io.IOException;
 import java.net.Socket;
@@ -138,6 +139,19 @@ public class Communication {
 
     }
 
+    public List<Raspored> vratiListuRasporeda() throws Exception {
+        Request request = new Request(Operation.UCITAJ_LISTU_RASPOREDA, null);
+        sender.send(request);
+
+        Response response = (Response) receiver.receive();
+        if (response.getException() == null) {
+            return (List<Raspored>) response.getResult();
+        } else {
+            throw response.getException();
+        }
+
+    }
+
     public List<Avion> vratiListuAviona() throws Exception {
         Request request = new Request(Operation.UCITAJ_LISTU_AVIONA, null);
         sender.send(request);
@@ -145,6 +159,19 @@ public class Communication {
         Response response = (Response) receiver.receive();
         if (response.getException() == null) {
             return (List<Avion>) response.getResult();
+        } else {
+            throw response.getException();
+        }
+
+    }
+
+    public List<Pilot> vratiListuPilota() throws Exception {
+        Request request = new Request(Operation.UCITAJ_LISTU_PILOTA, null);
+        sender.send(request);
+
+        Response response = (Response) receiver.receive();
+        if (response.getException() == null) {
+            return (List<Pilot>) response.getResult();
         } else {
             throw response.getException();
         }

@@ -58,8 +58,7 @@ public class DestinacijaController {
         }
         DestinacijaTableModel tm = new DestinacijaTableModel(lista);
         frm.getTblDestinacija().setModel(tm);
-        TableColumn column = frm.getTblDestinacija().getColumnModel().getColumn(2);
-        column.setPreferredWidth(200);
+  
 
     }
 

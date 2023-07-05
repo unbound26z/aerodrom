@@ -77,8 +77,6 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
 
         jLabel3.setText("Vreme:");
 
-        cbLet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btnDodaj.setText("Dodaj");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -157,7 +155,7 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnKreiraj;
-    private javax.swing.JComboBox<String> cbLet;
+    private javax.swing.JComboBox<Object> cbLet;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -195,11 +193,11 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
         this.btnKreiraj = btnKreiraj;
     }
 
-    public JComboBox<String> getCbLet() {
+    public JComboBox<Object> getCbLet() {
         return cbLet;
     }
 
-    public void setCbLet(JComboBox<String> cbLet) {
+    public void setCbLet(JComboBox<Object> cbLet) {
         this.cbLet = cbLet;
     }
 

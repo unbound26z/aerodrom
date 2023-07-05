@@ -8,6 +8,7 @@ import domain.Avion;
 import domain.Destinacija;
 import domain.Korisnik;
 import domain.Let;
+import domain.Pilot;
 import domain.Raspored;
 import java.io.IOException;
 import java.net.Socket;
@@ -26,7 +27,9 @@ import operation.korisnik.LoginKorisnik;
 import operation.let.NadjiLetove;
 import operation.let.UcitajListuLetova;
 import operation.let.ZapamtiLet;
+import operation.pilot.UcitajListuPilota;
 import operation.raspored.NadjiRasporede;
+import operation.raspored.UcitajListuRasporeda;
 import operation.raspored.ZapamtiRaspored;
 import thread.Server;
 
@@ -74,8 +77,6 @@ public class Controller {
         Korisnik korisnik = new Korisnik();
         korisnik.setEmail(email);
         korisnik.setSifra(sifra);
-                                    System.out.println("aloo");
-
         operation.execute(korisnik);
         korisnik = operation.vratiKorisnika();
         if (activeCl.containsKey(korisnik.getEmail())) {
@@ -120,6 +121,18 @@ public class Controller {
         UcitajListuAviona operation = new UcitajListuAviona();
         operation.execute(new Avion());
         return operation.vratiListuAviona();
+    }
+
+    public List<Pilot> vratiListuPilota() throws Exception {
+        UcitajListuPilota operation = new UcitajListuPilota();
+        operation.execute(new Pilot());
+        return operation.vratiListuPilota();
+    }
+
+    public List<Raspored> vratiListuRasporeda() throws Exception {
+        UcitajListuRasporeda operation = new UcitajListuRasporeda();
+        operation.execute(new Raspored());
+        return operation.vratiListuRasporeda();
     }
 
     public List<Destinacija> vratiListuDestinacija() throws Exception {

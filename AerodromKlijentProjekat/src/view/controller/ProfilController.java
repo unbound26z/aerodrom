@@ -25,7 +25,7 @@ public class ProfilController {
     public ProfilController(view.form.FrmProfil frmProfil) {
         this.frmProfil = frmProfil;
         addActionListener();
-
+        prepareView();
     }
 
     public void openForm() {
@@ -37,7 +37,7 @@ public class ProfilController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    Korisnik cm = (Korisnik) ViewCoordinator.getInstance().getParam("Leader");
+                    Korisnik cm = (Korisnik) ViewCoordinator.getInstance().getParam("Korisnik");
                     Socket socket = communication.Communication.getInstance().logout(cm);
                     frmProfil.dispose();
                     FrmMain frmMain = ViewCoordinator.getInstance().getFrmMain();
@@ -48,7 +48,8 @@ public class ProfilController {
                     JOptionPane.showMessageDialog(frmProfil, "Server is closed, Goodbye");
                     System.exit(0);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(frmProfil, "Goodbye!" + e.getMessage());
+                    JOptionPane.showMessageDialog(frmProfil, "Goodbye!");
+
                 }
             }
         });
@@ -57,7 +58,8 @@ public class ProfilController {
     private void prepareView() {
         Korisnik k = (Korisnik) ViewCoordinator.getInstance().getParam("Korisnik");
         System.out.println(k.getIme());
-        frmProfil.getLblIme().setText(k.getIme() + " " + k.getPrezime());
+        frmProfil.getTxtIme().setText(k.getIme());
+        frmProfil.getTxtPrezime().setText(k.getPrezime());
     }
 
 }

@@ -27,6 +27,7 @@ import view.form.FrmLogin;
 import view.form.FrmMain;
 import view.form.FrmLet;
 import view.form.FrmProfil;
+import view.form.FrmRaspored;
 
 /**
  *
@@ -108,6 +109,11 @@ public class ViewCoordinator {
     public void openFrmDodajRaspored() {
         dodajRasporedController = new DodajRasporedController(new FrmDodajRaspored(mainController.getFrmMain(), true));
         dodajRasporedController.openForm();
+    }
+
+    public void openFrmRaspored() {
+        rasporedController = new RasporedController(new FrmRaspored(mainController.getFrmMain(), true));
+        rasporedController.openForm();
     }
 
     public void addParam(String s, Object o) {

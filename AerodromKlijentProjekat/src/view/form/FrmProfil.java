@@ -49,6 +49,10 @@ public class FrmProfil extends javax.swing.JDialog {
             }
         });
 
+        txtIme.setEditable(false);
+
+        txtPrezime.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

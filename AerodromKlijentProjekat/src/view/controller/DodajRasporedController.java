@@ -5,8 +5,11 @@
 package view.controller;
 
 import communication.Communication;
+import domain.Avion;
 import domain.Destinacija;
+import domain.Let;
 import domain.Raspored;
+import domain.StavkaRasporeda;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.SocketException;
@@ -14,11 +17,15 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import view.coordinator.ViewCoordinator;
 import view.form.FrmDodajDestinaciju;
 import view.form.FrmDodajRaspored;
+import view.form.components.table.AvionTableModel;
+import view.form.components.table.StavkeTableModel;
 
 /**
  *
@@ -28,40 +35,81 @@ public class DodajRasporedController {
 
     private final FrmDodajRaspored frm;
     Date datum;
+    StavkeTableModel atm;
 
     public DodajRasporedController(view.form.FrmDodajRaspored frmDodajRaspored) {
         this.frm = frmDodajRaspored;
         addActionListener();
-
+        prepareView();
     }
 
     public void openForm() {
         frm.setVisible(true);
     }
 
+    public void prepareView() {
+
+        atm = new StavkeTableModel(new ArrayList<>());
+        frm.getTblStavke().setModel(atm);
+        try {
+            fillCbLet();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+
+    }
+
+    private void fillCbLet() throws Exception {
+        List<Let> list = Communication.getInstance().vratiListuLetova();
+        for (Let d : list) {
+            System.out.println(d.getLetId());
+            frm.getCbLet().addItem(d);
+
+        }
+    }
+
     private void addActionListener() {
-//        frm.dodajBtnKreirajRaspored(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                try {
-//                    SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy.");
-//
-//                    LocalDate datum
-//                            = Communication.getInstance().zapamtiRaspored(new Raspored(0, datum));
-//                    JOptionPane.showMessageDialog(frm, "Destinacija uspesno kreirana!");
-//                    //TODO: Refresh raspored view
-////                    ViewCoordinator.getInstance().ref();
-//                } catch (SocketException se) {
-//                    JOptionPane.showMessageDialog(frm, "Server zatvoren: " + se.getMessage());
-//                    System.exit(0);
-//                } catch (Exception e) {
-//                    JOptionPane.showMessageDialog(frm, "Neuspesno kreiranje destinacije: " + e.getMessage());
-//                    if (e.getMessage().equals("SERVER zatvoren")) {
-//                        System.exit(0);
-//                    }
-//                }
-//            }
-//        });
+        frm.dodajBtnKreirajRaspored(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+
+                    Communication.getInstance().zapamtiRaspored(new Raspored(Long.valueOf(0), datum));
+                    JOptionPane.showMessageDialog(frm, "Destinacija uspesno kreirana!");
+                    //TODO: Refresh raspored view
+//                    ViewCoordinator.getInstance().ref();
+                } catch (SocketException se) {
+                    JOptionPane.showMessageDialog(frm, "Server zatvoren: " + se.getMessage());
+                    System.exit(0);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(frm, "Neuspesno kreiranje destinacije: " + e.getMessage());
+                    if (e.getMessage().equals("SERVER zatvoren")) {
+                        System.exit(0);
+                    }
+                }
+            }
+        });
+
+        frm.dodajBtnDodajStavku(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    StavkaRasporeda sr = new StavkaRasporeda();
+                    sr.setId(Long.valueOf(0));
+                    sr.setLet((Let) frm.getCbLet().getSelectedItem());
+                    sr.setRaspored(Long.valueOf(0));
+                    sr.setVreme(frm.getTxtVreme().getText().trim());
+                    sr.setrBr(Long.valueOf(0));
+                    atm.dodajStavku(sr);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(frm, "Neuspesno kreiranje stavke: " + e.getMessage());
+                    if (e.getMessage().equals("SERVER zatvoren")) {
+                        System.exit(0);
+                    }
+                }
+            }
+        });
     }
 
     private void validateDates() throws Exception {
@@ -92,5 +140,5 @@ public class DodajRasporedController {
 //        }
 //    }
 
-}
+    }
 }

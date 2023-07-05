@@ -114,7 +114,7 @@ public class Destinacija implements GenericEntity {
         List<GenericEntity> lista = new ArrayList<>();
         while (rs.next()) {
             Destinacija k = new Destinacija();
-            k.setDestinacijaId(rs.getLong("id"));
+            k.setDestinacijaId(rs.getLong("destinacijaId"));
             k.setDrzava(rs.getString("drzava"));
             k.setNazivDestinacije(rs.getString("nazivDestinacije"));
             lista.add(k);

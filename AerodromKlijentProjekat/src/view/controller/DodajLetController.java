@@ -12,10 +12,12 @@ import domain.Pilot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.SocketException;
+import java.util.List;
 import javax.swing.JOptionPane;
 import view.coordinator.ViewCoordinator;
 import view.form.FrmDodajDestinaciju;
 import view.form.FrmDodajLet;
+import view.form.mode.FrmMode;
 
 /**
  *
@@ -28,7 +30,7 @@ public class DodajLetController {
     public DodajLetController(view.form.FrmDodajLet frmDodajLet) {
         this.frm = frmDodajLet;
         addActionListener();
-
+        prepareView(FrmMode.ADD);
     }
 
     public void openForm() {
@@ -60,6 +62,43 @@ public class DodajLetController {
                 }
             }
         });
+    }
+
+    private void prepareView(FrmMode mode) {
+        try {
+
+            fillCbPolazak();
+            fillCbAvion();
+            fillCbPilot();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    private void fillCbPolazak() throws Exception {
+        List<Destinacija> list = Communication.getInstance().vratiListuDestinaicja();
+        for (Destinacija d : list) {
+            System.out.println(d.getNazivDestinacije());
+            frm.getCbPolazak().addItem(d);
+            frm.getCbDolazak().addItem(d);
+        }
+    }
+
+    private void fillCbAvion() throws Exception {
+        List<Avion> list = Communication.getInstance().vratiListuAviona();
+        for (Avion d : list) {
+            System.out.println(d.getNazivAviona());
+            frm.getCbAvion().addItem(d);
+        }
+    }
+
+    private void fillCbPilot() throws Exception {
+        List<Pilot> list = Communication.getInstance().vratiListuPilota();
+        for (Pilot d : list) {
+            System.out.println(d.getPrezime());
+            frm.getCbPilot().addItem(d);
+        }
     }
 
 }

@@ -24,25 +24,25 @@ import view.form.components.table.LetTableModel;
  * @author Nikola
  */
 public class LetController {
-
+    
     private final FrmLet frm;
-
+    
     public LetController(FrmLet frm) {
         this.frm = frm;
         addActionListener();
-
+        
     }
-
+    
     public void openForm() {
         prepareView();
         frm.setVisible(true);
-
+        
     }
-
+    
     public FrmLet getFrmLet() {
         return frm;
     }
-
+    
     public void prepareView() {
         List<Let> lista = new ArrayList<>();
         try {
@@ -55,23 +55,23 @@ public class LetController {
         }
         LetTableModel tm = new LetTableModel(lista);
         frm.getTblLet().setModel(tm);
-        TableColumn column = frm.getTblLet().getColumnModel().getColumn(2);
-        column.setPreferredWidth(200);
+//        TableColumn column = frm.getTblLet().getColumnModel().getColumn(2);
+//        column.setPreferredWidth(100);
 
     }
-
+    
     private void addActionListener() {
         frm.dodajBtnNadjiListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                String letID = frm.getTxtLet().getText().trim();
-                if (letID.equals("")) {
+                String gg = frm.getTxtLet().getText().trim();
+                if (gg.equals("")) {
                     prepareView();
                     return;
                 }
                 try {
                     Let let = new Let(Long.valueOf(0), 0, 0, null, null, null, null);
-                    let.setLetId(Long.parseLong(letID));
+                    let.setCena(Integer.parseInt(gg));
                     List<Let> letovi = Communication.getInstance().nadjiLetove(let);
                     if (letovi.isEmpty()) {
                         JOptionPane.showMessageDialog(frm, "Ne postoji takav let!");
@@ -86,13 +86,13 @@ public class LetController {
                     System.exit(0);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(frm, "Greska pri trazenju leta: " + e.getMessage());
-
+                    
                 }
             }
         });
-
+        
     }
-
+    
     public void refreshTable() {
         List<Let> letovi = new ArrayList<>();
         try {
@@ -106,11 +106,11 @@ public class LetController {
         LetTableModel tm = new LetTableModel(letovi);
         frm.getTblLet().setModel(tm);
     }
-
+    
     private void validateEmptyFields() throws Exception {
         if (frm.getTxtLet().getText().isEmpty()) {
             throw new Exception("ID, title, descprition and deadline can't be empty!");
         }
-
+        
     }
 }

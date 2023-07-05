@@ -65,6 +65,27 @@ public class MainController {
             }
         });
 
+        frmMain.dodajJmiLetListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ViewCoordinator.getInstance().openFrmLet();
+            }
+        });
+
+        frmMain.dodajJmiRasporedListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ViewCoordinator.getInstance().openFrmRaspored();
+            }
+        });
+
+        frmMain.dodajJmiDodajRasporedListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ViewCoordinator.getInstance().openFrmDodajRaspored();
+            }
+        });
+
         frmMain.dodajJmiProfilListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
