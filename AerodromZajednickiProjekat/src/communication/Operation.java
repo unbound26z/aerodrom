@@ -32,5 +32,7 @@ public enum Operation implements Serializable {
     NADJI_RASPOREDE,
     UCITAJ_RASPORED,
     LOGIN,
-    LOGOUT
+    LOGOUT,
+    IZMENI_LET,
+    IZMENI_RASPORED
 }

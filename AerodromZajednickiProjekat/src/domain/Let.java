@@ -220,12 +220,8 @@ public class Let implements GenericEntity {
     public String getUpdateValues() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("trajanje=").append("'").append(trajanje).append("', ")
-                .append("cena=").append("'").append(cena).append("', ")
-                .append("mestoPolaska=").append("'").append(mestoPolaska.getDestinacijaId()).append("', ")
-                .append("destinacija=").append(destinacija.getDestinacijaId()).append(", ")
-                .append("avion=").append(avion.getAvionId()).append(", ")
-                .append("pilot=").append(pilot.getPilotId());
+        sb.append("trajanje=").append("").append(trajanje)
+                .append(",cena=").append("").append(cena);
 
         return sb.toString();
     }

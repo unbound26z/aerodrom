@@ -55,6 +55,10 @@ public class Raspored implements GenericEntity {
         return datum;
     }
 
+    public List<StavkaRasporeda> getStavke() {
+        return stavke;
+    }
+
     public void setDatum(Date datum) {
         this.datum = datum;
     }
@@ -69,6 +73,12 @@ public class Raspored implements GenericEntity {
         this.stavke = new ArrayList<>();
     }
 
+    public Raspored(Long rasporedId, Date datum, List<StavkaRasporeda> stavke) {
+        this.rasporedId = rasporedId;
+        this.datum = datum;
+        this.stavke = stavke;
+    }
+
     @Override
     public String getTableName() {
         return "raspored";
@@ -76,14 +86,13 @@ public class Raspored implements GenericEntity {
 
     @Override
     public String getColumnNamesForInsert() {
-        return "datum, stavke";
+        return "datum";
     }
 
     @Override
     public String getInsertValues() {
         StringBuilder sb = new StringBuilder();
-        sb.append("'").append(datum).append("', ")
-                .append("'").append(stavke).append("'");
+        sb.append("").append(datum).append("");
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -100,8 +109,8 @@ public class Raspored implements GenericEntity {
 
         while (rs.next()) {
             Raspored m = new Raspored();
-            m.setId(rs.getLong("r.rasporedId"));
-            m.setDatum(rs.getDate("r.datum"));
+            m.setId(rs.getLong("rasporedId"));
+            m.setDatum(rs.getDate("datum"));
 
             list.add(m);
         }
@@ -115,11 +124,7 @@ public class Raspored implements GenericEntity {
 
     @Override
     public String getUpdateValues() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("datum=").append("'").append(datum);
-
-        return sb.toString();
+        return "";
     }
 
     @Override

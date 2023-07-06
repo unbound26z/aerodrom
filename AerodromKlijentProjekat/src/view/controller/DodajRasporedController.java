@@ -74,11 +74,11 @@ public class DodajRasporedController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+                    Date datum = sdf.parse(frm.getTxtRaspored().getText().trim());
+                    Communication.getInstance().zapamtiRaspored(new Raspored(Long.valueOf(0), datum, atm.vratiStavke()));
+                    JOptionPane.showMessageDialog(frm, "Raspored uspesno kreiran!");
 
-                    Communication.getInstance().zapamtiRaspored(new Raspored(Long.valueOf(0), datum));
-                    JOptionPane.showMessageDialog(frm, "Destinacija uspesno kreirana!");
-                    //TODO: Refresh raspored view
-//                    ViewCoordinator.getInstance().ref();
                 } catch (SocketException se) {
                     JOptionPane.showMessageDialog(frm, "Server zatvoren: " + se.getMessage());
                     System.exit(0);
@@ -98,9 +98,8 @@ public class DodajRasporedController {
                     StavkaRasporeda sr = new StavkaRasporeda();
                     sr.setId(Long.valueOf(0));
                     sr.setLet((Let) frm.getCbLet().getSelectedItem());
-                    sr.setRaspored(Long.valueOf(0));
                     sr.setVreme(frm.getTxtVreme().getText().trim());
-                    sr.setrBr(Long.valueOf(0));
+                    sr.setrBr(Long.valueOf(frm.getTblStavke().getRowCount() + 1));
                     atm.dodajStavku(sr);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(frm, "Neuspesno kreiranje stavke: " + e.getMessage());

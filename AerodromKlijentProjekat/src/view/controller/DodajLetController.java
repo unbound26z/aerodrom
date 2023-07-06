@@ -30,10 +30,12 @@ public class DodajLetController {
     public DodajLetController(view.form.FrmDodajLet frmDodajLet) {
         this.frm = frmDodajLet;
         addActionListener();
-        prepareView(FrmMode.ADD);
+
     }
 
-    public void openForm() {
+    public void openForm(FrmMode frmMode) {
+
+        prepareView(frmMode);
         frm.setVisible(true);
     }
 
@@ -62,6 +64,37 @@ public class DodajLetController {
                 }
             }
         });
+
+        frm.dodajBtnIzmeniLet(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    if (frm.getTxtCena().getText().trim().equals("") || frm.getTxtTrajanje().getText().trim().equals("")) {
+                        JOptionPane.showMessageDialog(frm, "Text fields can't be empty!");
+                        return;
+                    }
+
+                    Let m = new Let();
+
+                    int cena = Integer.parseInt(frm.getTxtCena().getText().trim());
+                    int trajanje = Integer.parseInt(frm.getTxtTrajanje().getText().trim());
+
+                    Long id = ((Let) ViewCoordinator.getInstance().getParam("Let")).getLetId();
+                    m.setId(id);
+                    m.setCena(cena);
+                    m.setTrajanje(trajanje);
+                    Communication.getInstance().izmeniLet(m);
+                    ViewCoordinator.getInstance().refreshLetView();
+                    JOptionPane.showMessageDialog(frm, "Let edited successfully!");
+                    frm.dispose();
+                } catch (SocketException se) {
+                    JOptionPane.showMessageDialog(frm, "Server is closed, Goodbye");
+                    System.exit(0);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(frm, "Unsucessfully updating: " + e.getMessage());
+                }
+            }
+        });
     }
 
     private void prepareView(FrmMode mode) {
@@ -70,10 +103,29 @@ public class DodajLetController {
             fillCbPolazak();
             fillCbAvion();
             fillCbPilot();
+            prepareMode(mode);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    private void prepareMode(FrmMode mode) {
+        switch (mode) {
+            case ADD:
+                frm.getBtnIzmeni().setVisible(false);
+                break;
+            case EDIT:
+                frm.getBtnDodaj().setVisible(false);
+                Let m = (Let) ViewCoordinator.getInstance().getParam("Let");
+                frm.getTxtCena().setText(String.valueOf(m.getCena()));
+                frm.getTxtTrajanje().setText(String.valueOf(m.getTrajanje()));
+                frm.getCbPolazak().setVisible(false);
+                frm.getCbDolazak().setVisible(false);
+                frm.getCbAvion().setVisible(false);
+                frm.getCbPilot().setVisible(false);
+                break;
+        }
     }
 
     private void fillCbPolazak() throws Exception {

@@ -251,4 +251,15 @@ public class Communication {
         }
     }
 
+    public void izmeniLet(Let m) throws Exception {
+        Request request = new Request(Operation.IZMENI_LET, m);
+        sender.send(request);
+
+        Response response = (Response) receiver.receive();
+        if (response.getException() == null) {
+
+        } else {
+            throw response.getException();
+        }
+    }
 }

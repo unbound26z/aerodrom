@@ -45,6 +45,7 @@ public class FrmDodajLet extends javax.swing.JDialog {
         cbAvion = new javax.swing.JComboBox<>();
         cbPolazak = new javax.swing.JComboBox<>();
         cbDolazak = new javax.swing.JComboBox<>();
+        btnIzmeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,17 +67,20 @@ public class FrmDodajLet extends javax.swing.JDialog {
 
         txtCena.setText("(dinari)");
 
+        btnIzmeni.setText("Izmeni");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnIzmeni)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDodaj))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel6)
@@ -125,7 +129,9 @@ public class FrmDodajLet extends javax.swing.JDialog {
                     .addComponent(jLabel6)
                     .addComponent(cbAvion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(btnDodaj)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDodaj)
+                    .addComponent(btnIzmeni))
                 .addGap(19, 19, 19))
         );
 
@@ -135,6 +141,7 @@ public class FrmDodajLet extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnIzmeni;
     private javax.swing.JComboBox<Object> cbAvion;
     private javax.swing.JComboBox<Object> cbDolazak;
     private javax.swing.JComboBox<Object> cbPilot;
@@ -153,8 +160,16 @@ public class FrmDodajLet extends javax.swing.JDialog {
         btnDodaj.addActionListener(actionListener);
     }
 
+    public void dodajBtnIzmeniLet(ActionListener actionListener) {
+        btnIzmeni.addActionListener(actionListener);
+    }
+
     public JButton getBtnDodaj() {
         return btnDodaj;
+    }
+
+    public JButton getBtnIzmeni() {
+        return btnIzmeni;
     }
 
     public void setBtnDodaj(JButton btnDodaj) {

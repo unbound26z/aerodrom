@@ -28,6 +28,7 @@ import view.form.FrmMain;
 import view.form.FrmLet;
 import view.form.FrmProfil;
 import view.form.FrmRaspored;
+import view.form.mode.FrmMode;
 
 /**
  *
@@ -103,7 +104,12 @@ public class ViewCoordinator {
 
     public void openFrmDodajLet() {
         dodajLetController = new DodajLetController(new FrmDodajLet(mainController.getFrmMain(), true));
-        dodajLetController.openForm();
+        dodajLetController.openForm(FrmMode.ADD);
+    }
+
+    public void openFrmIzmeniLet() {
+        DodajLetController dodajLetController = new DodajLetController(new FrmDodajLet(mainController.getFrmMain(), true));
+        dodajLetController.openForm(FrmMode.EDIT);
     }
 
     public void openFrmDodajRaspored() {
@@ -142,6 +148,10 @@ public class ViewCoordinator {
 
     public void refreshDestinacijaView() {
         destinacijaController.refreshTable();
+    }
+
+    public void refreshLetView() {
+        letController.refreshTable();
     }
 
 }

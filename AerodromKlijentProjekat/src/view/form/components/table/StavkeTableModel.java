@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
 public class StavkeTableModel extends AbstractTableModel {
 
     private List<StavkaRasporeda> stavke;
-    private String[] columnNames = {"rBr", "rasporedId", "vreme", "letId"};
+    private String[] columnNames = {"rBr", "vreme", "letId"};
 
     public StavkeTableModel(List<StavkaRasporeda> stavke) {
         this.stavke = stavke;
@@ -36,7 +36,7 @@ public class StavkeTableModel extends AbstractTableModel {
     public void exist(String id, String rBr) throws Exception {
         for (StavkaRasporeda t : stavke) {
             //TODO: Proveri da li je u redu
-            if (t.getRaspored() == Long.parseLong(id) && t.getrBr() == Long.parseLong(rBr)) {
+            if (t.getrBr() == Long.parseLong(rBr)) {
                 throw new Exception("Task with thid ID already exists");
             }
         }
@@ -50,10 +50,8 @@ public class StavkeTableModel extends AbstractTableModel {
             case 0:
                 return stavke.get(i).getrBr();
             case 1:
-                return stavke.get(i).getRaspored();
-            case 2:
                 return stavke.get(i).getVreme();
-            case 3:
+            case 2:
                 return stavke.get(i).getLet().getMestoPolaska().getNazivDestinacije() + "-" + stavke.get(i).getLet().getDestinacija().getNazivDestinacije();
 
             default:

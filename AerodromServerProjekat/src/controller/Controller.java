@@ -24,10 +24,12 @@ import operation.destinacija.ObrisiDestinaciju;
 import operation.destinacija.UcitajListuDestinacija;
 import operation.destinacija.ZapamtiDestinaciju;
 import operation.korisnik.LoginKorisnik;
+import operation.let.IzmeniLet;
 import operation.let.NadjiLetove;
 import operation.let.UcitajListuLetova;
 import operation.let.ZapamtiLet;
 import operation.pilot.UcitajListuPilota;
+import operation.raspored.IzmeniRaspored;
 import operation.raspored.NadjiRasporede;
 import operation.raspored.UcitajListuRasporeda;
 import operation.raspored.ZapamtiRaspored;
@@ -109,6 +111,8 @@ public class Controller {
     public void zapamtiRaspored(Raspored raspored) throws Exception {
         AbstractGenericOperation operation = new ZapamtiRaspored();
         operation.execute(raspored);
+        
+        
     }
 
     public List<Let> vratiListuLetova() throws Exception {
@@ -168,5 +172,15 @@ public class Controller {
     public void obrisiDestinaciju(Destinacija destinacija) throws Exception {
         ObrisiDestinaciju operation = new ObrisiDestinaciju();
         operation.execute(destinacija);
+    }
+
+    public void izmeniLet(Let letIzmeni) throws Exception {
+        IzmeniLet operation = new IzmeniLet();
+        operation.execute(letIzmeni);
+    }
+
+    public void izmeniRaspored(Raspored rasporedIzmeni) throws Exception {
+        IzmeniRaspored operation = new IzmeniRaspored();
+        operation.execute(rasporedIzmeni);
     }
 }

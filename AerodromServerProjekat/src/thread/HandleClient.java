@@ -94,6 +94,7 @@ public class HandleClient extends Thread {
                         case ZAPAMTI_RASPORED:
                             Raspored novRaspored = (Raspored) request.getArgument();
                             Controller.getInstance().zapamtiRaspored(novRaspored);
+                            
                             break;
                         case NADJI_RASPOREDE:
                             Raspored trazeniRaspored = (Raspored) request.getArgument();
@@ -108,6 +109,14 @@ public class HandleClient extends Thread {
                         case LOGOUT:
                             Korisnik kOut = (Korisnik) request.getArgument();
                             Controller.getInstance().logout(kOut);
+                            break;
+                        case IZMENI_LET:
+                            Let letIzmeni = (Let) request.getArgument();
+                            Controller.getInstance().izmeniLet(letIzmeni);
+                            break;
+                        case IZMENI_RASPORED:
+                            Raspored rasporedIzmeni = (Raspored) request.getArgument();
+                            Controller.getInstance().izmeniRaspored(rasporedIzmeni);
                             break;
                         default:
                             throw new AssertionError(request.getOperation().name());
