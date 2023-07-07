@@ -10,6 +10,7 @@ import domain.Korisnik;
 import domain.Let;
 import domain.Pilot;
 import domain.Raspored;
+import domain.StavkaRasporeda;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
@@ -215,6 +216,18 @@ public class Communication {
         }
     }
 
+    public List<StavkaRasporeda> nadjiStavke(StavkaRasporeda stavka) throws Exception {
+        Request request = new Request(Operation.NADJI_STAVKE, stavka);
+        sender.send(request);
+
+        Response response = (Response) receiver.receive();
+        if (response.getException() == null) {
+            return (List<StavkaRasporeda>) response.getResult();
+        } else {
+            throw response.getException();
+        }
+    }
+
     public List<Avion> nadjiAvione(Avion avion) throws Exception {
         Request request = new Request(Operation.NADJI_AVIONE, avion);
         sender.send(request);
@@ -253,6 +266,18 @@ public class Communication {
 
     public void izmeniLet(Let m) throws Exception {
         Request request = new Request(Operation.IZMENI_LET, m);
+        sender.send(request);
+
+        Response response = (Response) receiver.receive();
+        if (response.getException() == null) {
+
+        } else {
+            throw response.getException();
+        }
+    }
+
+    public void izmeniRaspored(Raspored m) throws Exception {
+        Request request = new Request(Operation.IZMENI_RASPORED, m);
         sender.send(request);
 
         Response response = (Response) receiver.receive();

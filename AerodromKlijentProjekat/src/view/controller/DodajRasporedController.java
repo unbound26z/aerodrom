@@ -20,12 +20,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import view.coordinator.ViewCoordinator;
 import view.form.FrmDodajDestinaciju;
 import view.form.FrmDodajRaspored;
 import view.form.components.table.AvionTableModel;
 import view.form.components.table.StavkeTableModel;
+import view.form.mode.FrmMode;
 
 /**
  *
@@ -40,14 +43,16 @@ public class DodajRasporedController {
     public DodajRasporedController(view.form.FrmDodajRaspored frmDodajRaspored) {
         this.frm = frmDodajRaspored;
         addActionListener();
-        prepareView();
     }
 
-    public void openForm() {
+    public void openForm(FrmMode mode) {
+        prepareView(mode);
+
         frm.setVisible(true);
+
     }
 
-    public void prepareView() {
+    public void prepareView(FrmMode mode) {
 
         atm = new StavkeTableModel(new ArrayList<>());
         frm.getTblStavke().setModel(atm);
@@ -58,12 +63,44 @@ public class DodajRasporedController {
 
         }
 
+        prepareMode(mode);
+
+    }
+
+    private void prepareMode(FrmMode mode) {
+        switch (mode) {
+            case ADD:
+
+                frm.getBtnObrisi().setVisible(false);
+                frm.getBtnIzmeni().setVisible(false);
+                break;
+            case EDIT:
+
+                frm.getBtnKreiraj().setVisible(false);
+                frm.getTxtRaspored().setVisible(false);
+                frm.getLblRaspored().setVisible(false);
+                Raspored m = (Raspored) ViewCoordinator.getInstance().getParam("Raspored");
+
+                try {
+                    List<StavkaRasporeda> stavke = Communication.getInstance().nadjiStavke(new StavkaRasporeda(Long.valueOf(0), m.getRasporedId(), "", null));
+                    for (StavkaRasporeda st : stavke) {
+                        System.out.println(st);
+                        atm.dodajStavku(st);
+                    }
+
+                } catch (Exception ex) {
+                    System.out.println("Greska pri nalazenju stavki" + ex.getMessage());
+                }
+
+                break;
+
+        }
     }
 
     private void fillCbLet() throws Exception {
         List<Let> list = Communication.getInstance().vratiListuLetova();
         for (Let d : list) {
-            System.out.println(d.getLetId());
+            System.out.println(d);
             frm.getCbLet().addItem(d);
 
         }
@@ -107,6 +144,28 @@ public class DodajRasporedController {
                         System.exit(0);
                     }
                 }
+            }
+        });
+
+        frm.dodajBtnObrisiStavku(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                atm.izbaciStavku(frm.getTblStavke().getSelectedRow());
+
+            }
+        });
+
+        frm.dodajBtnIzmeniRaspored(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Raspored r = (Raspored) ViewCoordinator.getInstance().getParam("Raspored");
+                r.getStavke().addAll(atm.vratiStavke());
+                try {
+                    Communication.getInstance().izmeniRaspored(r);
+                } catch (Exception e) {
+                    System.out.println("Greska pri izmeni rasporeda: " + e.getMessage());
+                }
+
             }
         });
     }

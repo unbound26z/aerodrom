@@ -69,6 +69,11 @@ public class StavkeTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    public void izbaciStavku(int row) {
+        stavke.remove(row);
+        fireTableDataChanged();
+    }
+
     public List<StavkaRasporeda> vratiStavke() {
         return stavke;
     }

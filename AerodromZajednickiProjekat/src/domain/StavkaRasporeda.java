@@ -112,9 +112,9 @@ public class StavkaRasporeda implements GenericEntity {
     @Override
     public String getInsertValues() {
         StringBuilder sb = new StringBuilder();
-        sb.append("'").append(rasporedId).append("', ")
+        sb.append("").append(rasporedId).append(", ")
                 .append("'").append(vreme).append("', ")
-                .append(let).append("'");
+                .append(let).append("");
 
         System.out.println(sb.toString());
         return sb.toString();
@@ -136,6 +136,20 @@ public class StavkaRasporeda implements GenericEntity {
             Let l = new Let();
             l.setLetId(rs.getLong("l.letId"));
 
+            Destinacija d = new Destinacija();
+            d.setDestinacijaId(rs.getLong("d.destinacijaId"));
+            d.setDrzava(rs.getString("d.drzava"));
+            d.setNazivDestinacije(rs.getString("d.nazivDestinacije"));
+
+            l.setMestoPolaska(d);
+
+            Destinacija dd = new Destinacija();
+            dd.setDestinacijaId(rs.getLong("dd.destinacijaId"));
+            dd.setDrzava(rs.getString("dd.drzava"));
+            dd.setNazivDestinacije(rs.getString("dd.nazivDestinacije"));
+
+            l.setDestinacija(dd);
+
             s.setLet(l);
 
             list.add(s);
@@ -145,7 +159,7 @@ public class StavkaRasporeda implements GenericEntity {
 
     @Override
     public String getJoinCondition() {
-        return "s LEFT JOIN let l ON (s.letId=l.letId)";
+        return "s LEFT JOIN let l ON (s.letId=l.letId) LEFT JOIN destinacija d ON (d.destinacijaId=l.mestoPolaska) LEFT JOIN destinacija dd ON (dd.destinacijaId=l.destinacijaId)";
     }
 
     @Override
@@ -160,7 +174,7 @@ public class StavkaRasporeda implements GenericEntity {
 
     @Override
     public String getSearchCase() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "rasporedId = " + rasporedId + "";
     }
 
 }

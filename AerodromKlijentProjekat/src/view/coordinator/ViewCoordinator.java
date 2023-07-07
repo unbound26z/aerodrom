@@ -112,9 +112,14 @@ public class ViewCoordinator {
         dodajLetController.openForm(FrmMode.EDIT);
     }
 
+    public void openFrmIzmeniRaspored() {
+        DodajRasporedController dodajRasporedController = new DodajRasporedController(new FrmDodajRaspored(mainController.getFrmMain(), true));
+        dodajRasporedController.openForm(FrmMode.EDIT);
+    }
+
     public void openFrmDodajRaspored() {
         dodajRasporedController = new DodajRasporedController(new FrmDodajRaspored(mainController.getFrmMain(), true));
-        dodajRasporedController.openForm();
+        dodajRasporedController.openForm(FrmMode.ADD);
     }
 
     public void openFrmRaspored() {

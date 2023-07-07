@@ -7,6 +7,7 @@ package view.form;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -38,7 +39,7 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
         jMenu2 = new javax.swing.JMenu();
         txtRaspored = new javax.swing.JTextField();
         btnKreiraj = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblRaspored = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStavke = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -47,6 +48,8 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
         cbLet = new javax.swing.JComboBox<>();
         txtVreme = new javax.swing.JTextField();
         btnDodaj = new javax.swing.JButton();
+        btnObrisi = new javax.swing.JButton();
+        btnIzmeni = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -56,7 +59,7 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
 
         btnKreiraj.setText("Kreiraj");
 
-        jLabel1.setText("Novi raspored: ");
+        lblRaspored.setText("Novi raspored: ");
 
         tblStavke.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,6 +116,10 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
                 .addGap(32, 32, 32))
         );
 
+        btnObrisi.setText("Obrisi");
+
+        btnIzmeni.setText("Izmeni");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,15 +128,18 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblRaspored)
                         .addGap(255, 255, 255)
                         .addComponent(txtRaspored, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(301, 301, 301)
-                            .addComponent(btnKreiraj))))
+                            .addComponent(btnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(226, 226, 226)
+                            .addComponent(btnKreiraj)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnIzmeni, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -137,14 +147,17 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblRaspored)
                     .addComponent(txtRaspored, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(btnKreiraj)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnKreiraj)
+                    .addComponent(btnObrisi)
+                    .addComponent(btnIzmeni))
                 .addGap(19, 19, 19))
         );
 
@@ -154,9 +167,10 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnIzmeni;
     private javax.swing.JButton btnKreiraj;
+    private javax.swing.JButton btnObrisi;
     private javax.swing.JComboBox<Object> cbLet;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
@@ -164,6 +178,7 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblRaspored;
     private javax.swing.JTable tblStavke;
     private javax.swing.JTextField txtRaspored;
     private javax.swing.JTextField txtVreme;
@@ -177,8 +192,28 @@ public class FrmDodajRaspored extends javax.swing.JDialog {
         btnDodaj.addActionListener(actionListener);
     }
 
+    public void dodajBtnIzmeniRaspored(ActionListener actionListener) {
+        btnIzmeni.addActionListener(actionListener);
+    }
+
+    public void dodajBtnObrisiStavku(ActionListener actionListener) {
+        btnObrisi.addActionListener(actionListener);
+    }
+
     public JButton getBtnDodaj() {
         return btnDodaj;
+    }
+
+    public JButton getBtnIzmeni() {
+        return btnIzmeni;
+    }
+
+    public JLabel getLblRaspored() {
+        return lblRaspored;
+    }
+
+    public JButton getBtnObrisi() {
+        return btnObrisi;
     }
 
     public void setBtnDodaj(JButton btnDodaj) {

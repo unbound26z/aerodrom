@@ -10,6 +10,7 @@ import domain.Korisnik;
 import domain.Let;
 import domain.Pilot;
 import domain.Raspored;
+import domain.StavkaRasporeda;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
@@ -33,6 +34,7 @@ import operation.raspored.IzmeniRaspored;
 import operation.raspored.NadjiRasporede;
 import operation.raspored.UcitajListuRasporeda;
 import operation.raspored.ZapamtiRaspored;
+import operation.stavkaRasporeda.NadjiStavke;
 import thread.Server;
 
 /**
@@ -111,8 +113,7 @@ public class Controller {
     public void zapamtiRaspored(Raspored raspored) throws Exception {
         AbstractGenericOperation operation = new ZapamtiRaspored();
         operation.execute(raspored);
-        
-        
+
     }
 
     public List<Let> vratiListuLetova() throws Exception {
@@ -155,6 +156,12 @@ public class Controller {
         NadjiRasporede operation = new NadjiRasporede();
         operation.execute(raspored);
         return operation.vratiRasporede();
+    }
+
+    public List<StavkaRasporeda> nadjiStavke(StavkaRasporeda stavka) throws Exception {
+        NadjiStavke operation = new NadjiStavke();
+        operation.execute(stavka);
+        return operation.vratiStavke();
     }
 
     public List<Avion> nadjiAvione(Avion avion) throws Exception {

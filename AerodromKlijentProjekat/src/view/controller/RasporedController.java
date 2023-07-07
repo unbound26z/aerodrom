@@ -13,8 +13,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.Socket;
 import java.net.SocketException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumn;
 import view.coordinator.ViewCoordinator;
@@ -44,7 +49,25 @@ public class RasporedController {
     }
 
     private void addActionListener() {
+        frm.dodajBtnIzmeniListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
 
+                int row = frm.getTblRaspored().getSelectedRow();
+
+                Raspored r = new Raspored();
+                r.setRasporedId((Long) frm.getTblRaspored().getValueAt(row, 0));
+                try {
+                    r.setDatum(sdf.parse(String.valueOf(frm.getTblRaspored().getValueAt(row, 1))));
+                } catch (ParseException ex) {
+                    System.out.println("Parsing greska");
+                }
+
+                ViewCoordinator.getInstance().addParam("Raspored", r);
+                ViewCoordinator.getInstance().openFrmIzmeniRaspored();
+            }
+        });
     }
 
     private void prepareView() {

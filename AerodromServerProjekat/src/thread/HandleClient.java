@@ -16,6 +16,7 @@ import domain.Korisnik;
 import domain.Let;
 import domain.Pilot;
 import domain.Raspored;
+import domain.StavkaRasporeda;
 import java.net.Socket;
 import java.util.List;
 
@@ -94,11 +95,15 @@ public class HandleClient extends Thread {
                         case ZAPAMTI_RASPORED:
                             Raspored novRaspored = (Raspored) request.getArgument();
                             Controller.getInstance().zapamtiRaspored(novRaspored);
-                            
+
                             break;
                         case NADJI_RASPOREDE:
                             Raspored trazeniRaspored = (Raspored) request.getArgument();
                             response.setResult(Controller.getInstance().nadjiRasporede(trazeniRaspored));
+                            break;
+                        case NADJI_STAVKE:
+                            StavkaRasporeda stavka = (StavkaRasporeda) request.getArgument();
+                            response.setResult(Controller.getInstance().nadjiStavke(stavka));
                             break;
                         case LOGIN:
                             Korisnik k = (Korisnik) request.getArgument();

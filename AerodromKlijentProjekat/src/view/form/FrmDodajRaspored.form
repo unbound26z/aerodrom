@@ -44,7 +44,7 @@
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRaspored" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
                       <Component id="txtRaspored" min="-2" pref="345" max="-2" attributes="0"/>
                   </Group>
@@ -52,8 +52,11 @@
                       <Component id="jScrollPane1" alignment="0" pref="681" max="32767" attributes="0"/>
                       <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="301" max="-2" attributes="0"/>
+                          <Component id="btnObrisi" min="-2" pref="75" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
                           <Component id="btnKreiraj" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnIzmeni" min="-2" pref="75" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -66,7 +69,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblRaspored" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtRaspored" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
@@ -74,7 +77,11 @@
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="144" max="-2" attributes="0"/>
               <EmptySpace pref="41" max="32767" attributes="0"/>
-              <Component id="btnKreiraj" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnKreiraj" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnObrisi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnIzmeni" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -88,7 +95,7 @@
         <Property name="text" type="java.lang.String" value="Kreiraj"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblRaspored">
       <Properties>
         <Property name="text" type="java.lang.String" value="Novi raspored: "/>
       </Properties>
@@ -196,5 +203,15 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnObrisi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Obrisi"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnIzmeni">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Izmeni"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

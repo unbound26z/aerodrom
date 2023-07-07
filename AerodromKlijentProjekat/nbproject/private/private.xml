@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Nikola/Documents/NetBeansProjects/Aerodrom/AerodromKlijentProjekat/src/view/form/FrmDodajLet.java</file>
+            <file>file:/C:/Users/Nikola/Documents/NetBeansProjects/Aerodrom/AerodromKlijentProjekat/src/view/form/components/table/RasporedTableModel.java</file>
+            <file>file:/C:/Users/Nikola/Documents/NetBeansProjects/Aerodrom/AerodromKlijentProjekat/src/main/Main.java</file>
+            <file>file:/C:/Users/Nikola/Documents/NetBeansProjects/Aerodrom/AerodromKlijentProjekat/src/view/controller/ProfilController.java</file>
+            <file>file:/C:/Users/Nikola/Documents/NetBeansProjects/Aerodrom/AerodromKlijentProjekat/src/view/controller/RasporedController.java</file>
+            <file>file:/C:/Users/Nikola/Documents/NetBeansProjects/Aerodrom/AerodromKlijentProjekat/src/view/controller/DodajRasporedController.java</file>
+            <file>file:/C:/Users/Nikola/Documents/NetBeansProjects/Aerodrom/AerodromKlijentProjekat/src/view/coordinator/ViewCoordinator.java</file>
+        </group>
     </open-files>
 </project-private>
