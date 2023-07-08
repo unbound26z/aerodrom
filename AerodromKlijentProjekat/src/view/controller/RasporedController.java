@@ -75,7 +75,7 @@ public class RasporedController {
         try {
             list = Communication.getInstance().vratiListuRasporeda();
         } catch (SocketException se) {
-            JOptionPane.showMessageDialog(frm, "Server is closed, Goodbye");
+            JOptionPane.showMessageDialog(frm, "Server je zatvoren");
             System.exit(0);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(frm, "Error: " + ex.getMessage());

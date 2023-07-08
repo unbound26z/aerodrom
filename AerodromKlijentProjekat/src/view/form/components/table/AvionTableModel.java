@@ -36,7 +36,7 @@ public class AvionTableModel extends AbstractTableModel {
         for (Avion t : avioni) {
             //TODO: Proveri da li je u redu
             if (t.getAvionId() == Long.parseLong(id)) {
-                throw new Exception("Task with thid ID already exists");
+                throw new Exception("Avion sa ovim ID vec postoji");
             }
         }
     }

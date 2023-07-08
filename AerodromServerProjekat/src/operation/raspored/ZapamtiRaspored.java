@@ -30,7 +30,7 @@ public class ZapamtiRaspored extends AbstractGenericOperation {
         List<Raspored> rasporedi = repository.getAll(new Raspored());
         for (Raspored r : rasporedi) {
             if (r.getRasporedId() == ((Raspored) param).getRasporedId()) {
-                throw new Exception("Vec postoji ova raspored!");
+                throw new Exception("Vec postoji ovaj raspored!");
             }
         }
     }

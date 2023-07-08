@@ -71,6 +71,7 @@ public class AvionController {
                 try {
                     Avion avion = new Avion(new Long(0), null, 0, null, 0, null);
                     avion.setNazivAviona(naziv);
+                    validacija();
                     List<Avion> avioni = Communication.getInstance().nadjiAvione(avion);
                     if (avioni.isEmpty()) {
                         JOptionPane.showMessageDialog(frmAvion, "Ne postoji takav avion!");
@@ -97,7 +98,7 @@ public class AvionController {
         try {
             avioni = Communication.getInstance().vratiListuAviona();
         } catch (SocketException se) {
-            JOptionPane.showMessageDialog(frmAvion, "Server is closed, Goodbye");
+            JOptionPane.showMessageDialog(frmAvion, "Server zatvoren");
             System.exit(0);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(frmAvion, "Error: " + ex.getMessage());
@@ -106,9 +107,9 @@ public class AvionController {
         frmAvion.getTblAvion().setModel(tm);
     }
 
-    private void validateEmptyFields() throws Exception {
+    private void validacija() throws Exception {
         if (frmAvion.getTxtAvion().getText().isEmpty()) {
-            throw new Exception("ID, title, descprition and deadline can't be empty!");
+            throw new Exception("Ne sme ostati prazno polje!");
         }
 
     }

@@ -28,7 +28,7 @@ public class Receiver {
             throw se;
         }
         catch(Exception e){
-            throw new Exception("Error receiving object!\n"+e.getMessage());
+            throw new Exception("Error u Receiver!\n"+e.getMessage());
         }
     }
 }

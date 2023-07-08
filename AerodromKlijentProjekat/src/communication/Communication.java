@@ -33,7 +33,7 @@ public class Communication {
             receiver = new Receiver(socket);
             sender = new Sender(socket);
         } catch (SocketException se) {
-            throw new Exception("Server is not connected!");
+            throw new Exception("Server nije povezan!");
 
         } catch (Exception e) {
 

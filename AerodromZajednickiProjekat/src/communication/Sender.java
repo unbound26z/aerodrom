@@ -30,7 +30,7 @@ public class Sender {
             throw se;
         }
         catch(Exception e){
-            throw new Exception("Error sending object!\n"+e.getMessage());
+            throw new Exception("Error in Sender!\n"+e.getMessage());
         }
     }
     

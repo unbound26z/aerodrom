@@ -37,7 +37,7 @@ public class StavkeTableModel extends AbstractTableModel {
         for (StavkaRasporeda t : stavke) {
             //TODO: Proveri da li je u redu
             if (t.getrBr() == Long.parseLong(rBr)) {
-                throw new Exception("Task with thid ID already exists");
+                throw new Exception("Stavka sa ovim ID vec postoji");
             }
         }
     }

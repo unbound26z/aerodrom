@@ -36,7 +36,6 @@ public class IzmeniRaspored extends AbstractGenericOperation {
             System.out.println("Delete: " + st1);
             st1.executeUpdate();
 
-            System.out.println("Izbirsane stare stavke");
             String querySt = "INSERT INTO stavkarasporeda (rBr, rasporedId, vreme, letId) VALUES (?, ?, ?, ?)";
             for (StavkaRasporeda st : r.getStavke()) {
                 System.out.println("Nova stavka: " + st);
@@ -50,10 +49,7 @@ public class IzmeniRaspored extends AbstractGenericOperation {
                 statementSt.executeUpdate();
             }
 
-            System.out.println("Dodate nove stavke");
             connection.commit();
-
-            System.out.println("After commit");
 
         } catch (Exception e) {
             connection.rollback();

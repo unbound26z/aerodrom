@@ -37,7 +37,7 @@ public class RasporedTableModel extends AbstractTableModel {
         for (Raspored t : rasporedi) {
             //TODO: Proveri da li je u redu
             if (t.getRasporedId() == Long.parseLong(id)) {
-                throw new Exception("Task with thid ID already exists");
+                throw new Exception("Raspored sa ovim ID vec postoji");
             }
         }
     }

@@ -61,26 +61,23 @@ public class DodajDestinacijuController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    if (frm.getTxtNaziv().getText().trim().equals("") || frm.getTxtDrzava().getText().trim().equals("")) {
-                        JOptionPane.showMessageDialog(frm, "Text fields can't be empty!");
-                        return;
-                    }
+                    validacija();
                     Destinacija m = new Destinacija();
                     m.setNazivDestinacije(frm.getTxtNaziv().getText().trim());
                     m.setDrzava(frm.getTxtDrzava().getText().trim());
 
                     Destinacija d = (Communication.getInstance().nadjiDestinacije(m)).get(0);
 
-                    int answer = JOptionPane.showConfirmDialog(frm, "Do you really want to delete this dest?");
+                    int answer = JOptionPane.showConfirmDialog(frm, "Da li ste sigurni?");
                     if (answer != 0) {
                         return;
                     }
                     Communication.getInstance().obrisiDestinaciju(d);
 
-                    JOptionPane.showMessageDialog(frm, "Dest deleted successfully!");
+                    JOptionPane.showMessageDialog(frm, "Obrisano!");
                     frm.dispose();
                 } catch (SocketException se) {
-                    JOptionPane.showMessageDialog(frm, "Server is closed, Goodbye");
+                    JOptionPane.showMessageDialog(frm, "Server je zatvoren!");
                     System.exit(0);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(frm, "Neuspesno brisanje destinacije: " + e.getMessage());
@@ -88,6 +85,14 @@ public class DodajDestinacijuController {
             }
         }
         );
+    }
+
+    private void validacija() throws Exception {
+        if (frm.getTxtNaziv().getText().isEmpty()
+                | frm.getTxtDrzava().getText().isEmpty()) {
+            throw new Exception("Ne sme ostati prazno polje!");
+        }
+
     }
 
 }

@@ -37,7 +37,7 @@ public class LetTableModel extends AbstractTableModel {
         for (Let t : letovi) {
             //TODO: Proveri da li je u redu
             if (t.getLetId() == Long.parseLong(id)) {
-                throw new Exception("Task with thid ID already exists");
+                throw new Exception("Let sa ovim ID vec postoji");
             }
         }
     }

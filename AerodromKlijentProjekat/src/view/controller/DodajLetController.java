@@ -44,6 +44,7 @@ public class DodajLetController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
+                    validacija();
                     int cena = Integer.parseInt(frm.getTxtCena().getText().trim());
                     int trajanje = Integer.parseInt(frm.getTxtTrajanje().getText().trim());
                     Destinacija mestoPolaska = (Destinacija) frm.getCbPolazak().getSelectedItem();
@@ -69,8 +70,9 @@ public class DodajLetController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
+                    validacija();
                     if (frm.getTxtCena().getText().trim().equals("") || frm.getTxtTrajanje().getText().trim().equals("")) {
-                        JOptionPane.showMessageDialog(frm, "Text fields can't be empty!");
+                        JOptionPane.showMessageDialog(frm, "Polja ne smeju biti prazna!");
                         return;
                     }
 
@@ -85,13 +87,13 @@ public class DodajLetController {
                     m.setTrajanje(trajanje);
                     Communication.getInstance().izmeniLet(m);
                     ViewCoordinator.getInstance().refreshLetView();
-                    JOptionPane.showMessageDialog(frm, "Let edited successfully!");
+                    JOptionPane.showMessageDialog(frm, "Let izmenjen!");
                     frm.dispose();
                 } catch (SocketException se) {
-                    JOptionPane.showMessageDialog(frm, "Server is closed, Goodbye");
+                    JOptionPane.showMessageDialog(frm, "Server je zatvoren");
                     System.exit(0);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(frm, "Unsucessfully updating: " + e.getMessage());
+                    JOptionPane.showMessageDialog(frm, "Neuspesna izmena leta: " + e.getMessage());
                 }
             }
         });
@@ -151,6 +153,14 @@ public class DodajLetController {
             System.out.println(d.getPrezime());
             frm.getCbPilot().addItem(d);
         }
+    }
+
+    private void validacija() throws Exception {
+        if (frm.getTxtCena().getText().isEmpty()
+                | frm.getTxtTrajanje().getText().isEmpty()) {
+            throw new Exception("Ne sme ostati prazno polje!");
+        }
+
     }
 
 }

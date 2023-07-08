@@ -45,10 +45,10 @@ public class ProfilController {
                     socket.close();
                     ViewCoordinator.getInstance().openFrmLogin();
                 } catch (SocketException se) {
-                    JOptionPane.showMessageDialog(frmProfil, "Server is closed, Goodbye");
+                    JOptionPane.showMessageDialog(frmProfil, "Server je zatvoren.");
                     System.exit(0);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(frmProfil, "Goodbye!");
+                    JOptionPane.showMessageDialog(frmProfil, "Dovidjenja!");
 
                 }
             }

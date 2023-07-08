@@ -52,7 +52,7 @@ public class LetController {
             JOptionPane.showMessageDialog(frm, "Server zatvoren");
             System.exit(0);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(frm, "Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(frm, "Greska: " + ex.getMessage());
         }
         LetTableModel tm = new LetTableModel(lista);
         frm.getTblLet().setModel(tm);
@@ -71,6 +71,7 @@ public class LetController {
                     return;
                 }
                 try {
+                    validacija();
                     Let let = new Let(Long.valueOf(0), 0, 0, null, null, null, null);
                     let.setCena(Integer.parseInt(gg));
                     List<Let> letovi = Communication.getInstance().nadjiLetove(let);
@@ -120,9 +121,9 @@ public class LetController {
         frm.getTblLet().setModel(tm);
     }
 
-    private void validateEmptyFields() throws Exception {
+    private void validacija() throws Exception {
         if (frm.getTxtLet().getText().isEmpty()) {
-            throw new Exception("ID, title, descprition and deadline can't be empty!");
+            throw new Exception("Ne sme ostati prazno polje!");
         }
 
     }

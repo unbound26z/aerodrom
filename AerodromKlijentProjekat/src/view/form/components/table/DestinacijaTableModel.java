@@ -37,7 +37,7 @@ public class DestinacijaTableModel extends AbstractTableModel {
         for (Destinacija t : destinacije) {
             //TODO: Proveri da li je u redu
             if (t.getDestinacijaId() == Long.parseLong(id)) {
-                throw new Exception("Task with thid ID already exists");
+                throw new Exception("Destinacija sa ovim ID vec postoji");
             }
         }
     }

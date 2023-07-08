@@ -58,7 +58,6 @@ public class DestinacijaController {
         }
         DestinacijaTableModel tm = new DestinacijaTableModel(lista);
         frm.getTblDestinacija().setModel(tm);
-  
 
     }
 
@@ -74,6 +73,7 @@ public class DestinacijaController {
                 try {
                     Destinacija destinacija = new Destinacija(0, naziv, naziv);
                     destinacija.setNazivDestinacije(naziv);
+                    validacija();
                     List<Destinacija> destinacije = Communication.getInstance().nadjiDestinacije(destinacija);
                     if (destinacije.isEmpty()) {
                         JOptionPane.showMessageDialog(frm, "Ne postoji takva destinacija!");
@@ -100,7 +100,7 @@ public class DestinacijaController {
         try {
             destinacije = Communication.getInstance().vratiListuDestinaicja();
         } catch (SocketException se) {
-            JOptionPane.showMessageDialog(frm, "Server is closed, Goodbye");
+            JOptionPane.showMessageDialog(frm, "Server zatvoren");
             System.exit(0);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(frm, "Error: " + ex.getMessage());
@@ -109,9 +109,9 @@ public class DestinacijaController {
         frm.getTblDestinacija().setModel(tm);
     }
 
-    private void validateEmptyFields() throws Exception {
+    private void validacija() throws Exception {
         if (frm.getTxtDestinacija().getText().isEmpty()) {
-            throw new Exception("ID, title, descprition and deadline can't be empty!");
+            throw new Exception("Ne sme ostati prazno polje!");
         }
 
     }

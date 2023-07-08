@@ -25,13 +25,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="btnIzmeni" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnDodaj" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -41,22 +41,17 @@
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtTrajanje" max="32767" attributes="0"/>
-                                  <Component id="txtCena" max="32767" attributes="0"/>
-                                  <Component id="cbPilot" pref="186" max="32767" attributes="0"/>
-                                  <Component id="cbAvion" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="cbPolazak" max="32767" attributes="0"/>
-                          <Component id="cbDolazak" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cbPolazak" alignment="0" pref="463" max="32767" attributes="0"/>
+                          <Component id="cbPilot" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtCena" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtTrajanje" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbDolazak" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbAvion" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="34" pref="417" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

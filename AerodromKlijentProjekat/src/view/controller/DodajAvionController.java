@@ -36,6 +36,7 @@ public class DodajAvionController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
+                    validacija();
                     String name = frmDodajAvion.getTxtNaziv().getText().trim();
                     int brojSedista = Integer.parseInt(frmDodajAvion.getTxtBrojSedista().getText().trim());
                     String mestoProizvodnje = frmDodajAvion.getTxtMestoProizvodnje().getText().trim();
@@ -43,7 +44,6 @@ public class DodajAvionController {
                     String aviokompanija = frmDodajAvion.getTxtAviokompanija().getText().trim();
                     Communication.getInstance().zapamtiAvion(new Avion(new Long(0), name, brojSedista, mestoProizvodnje, godinaProizvodnje, aviokompanija));
                     JOptionPane.showMessageDialog(frmDodajAvion, "Avion uspesno kreiran!");
-                    ViewCoordinator.getInstance().refreshAvionView();
                 } catch (SocketException se) {
                     JOptionPane.showMessageDialog(frmDodajAvion, "Server zatvoren: " + se.getMessage());
                     System.exit(0);
@@ -55,6 +55,17 @@ public class DodajAvionController {
                 }
             }
         });
+    }
+
+    private void validacija() throws Exception {
+        if (frmDodajAvion.getTxtNaziv().getText().isEmpty()
+                | frmDodajAvion.getTxtMestoProizvodnje().getText().isEmpty()
+                | frmDodajAvion.getTxtGodinaProizvodnje().getText().isEmpty()
+                | frmDodajAvion.getTxtBrojSedista().getText().isEmpty()
+                | frmDodajAvion.getTxtAviokompanija().getText().isEmpty()) {
+            throw new Exception("Ne sme ostati prazno polje!");
+        }
+
     }
 
 }
