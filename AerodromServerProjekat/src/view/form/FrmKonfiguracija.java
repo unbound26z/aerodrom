@@ -24,6 +24,7 @@ public class FrmKonfiguracija extends javax.swing.JDialog {
     public FrmKonfiguracija(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        pripremiIzgled();
     }
 
     /**

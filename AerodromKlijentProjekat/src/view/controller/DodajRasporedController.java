@@ -35,77 +35,77 @@ import view.form.mode.FrmMode;
  * @author Nikola
  */
 public class DodajRasporedController {
-    
+
     private final FrmDodajRaspored frm;
     Date datum;
     StavkeTableModel atm;
-    
+
     public DodajRasporedController(view.form.FrmDodajRaspored frmDodajRaspored) {
         this.frm = frmDodajRaspored;
         addActionListener();
     }
-    
+
     public void openForm(FrmMode mode) {
         prepareView(mode);
-        
+
         frm.setVisible(true);
-        
+
     }
-    
+
     public void prepareView(FrmMode mode) {
-        
+
         atm = new StavkeTableModel(new ArrayList<>());
         frm.getTblStavke().setModel(atm);
         try {
             fillCbLet();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            
+
         }
-        
+
         prepareMode(mode);
-        
+
     }
-    
+
     private void prepareMode(FrmMode mode) {
         switch (mode) {
             case ADD:
-                
+
                 frm.getBtnObrisi().setVisible(false);
                 frm.getBtnIzmeni().setVisible(false);
                 break;
             case EDIT:
-                
+
                 frm.getBtnKreiraj().setVisible(false);
                 frm.getTxtRaspored().setVisible(false);
                 frm.getLblRaspored().setVisible(false);
                 Raspored m = (Raspored) ViewCoordinator.getInstance().getParam("Raspored");
-                
+
                 try {
                     List<StavkaRasporeda> stavke = Communication.getInstance().nadjiStavke(new StavkaRasporeda(Long.valueOf(0), m.getRasporedId(), "", null));
                     for (StavkaRasporeda st : stavke) {
                         System.out.println(st);
                         atm.dodajStavku(st);
                     }
-                    
+
                 } catch (Exception ex) {
                     System.out.println("Greska pri nalazenju stavki" + ex.getMessage());
                 }
-                
+
                 break;
-            
+
         }
     }
-    
+
     private void fillCbLet() throws Exception {
         List<Let> list = Communication.getInstance().vratiListuLetova();
         for (Let d : list) {
             System.out.println(d);
             frm.getCbLet().addItem(d);
-            
+
         }
     }
-    
+
     private void addActionListener() {
         frm.dodajBtnKreirajRaspored(new ActionListener() {
             @Override
@@ -117,7 +117,7 @@ public class DodajRasporedController {
                     Date datum = sdf.parse(frm.getTxtRaspored().getText().trim());
                     Communication.getInstance().zapamtiRaspored(new Raspored(Long.valueOf(0), datum, atm.vratiStavke()));
                     JOptionPane.showMessageDialog(frm, "Raspored uspesno kreiran!");
-                    
+
                 } catch (SocketException se) {
                     JOptionPane.showMessageDialog(frm, "Server zatvoren: " + se.getMessage());
                     System.exit(0);
@@ -129,7 +129,7 @@ public class DodajRasporedController {
                 }
             }
         });
-        
+
         frm.dodajBtnDodajStavku(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -149,19 +149,18 @@ public class DodajRasporedController {
                 }
             }
         });
-        
+
         frm.dodajBtnObrisiStavku(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 atm.izbaciStavku(frm.getTblStavke().getSelectedRow());
-                
+
             }
         });
-        
+
         frm.dodajBtnIzmeniRaspored(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                validacijaVremena(frm.getTxtVreme().getText().trim());
                 Raspored r = (Raspored) ViewCoordinator.getInstance().getParam("Raspored");
                 r.getStavke().addAll(atm.vratiStavke());
                 try {
@@ -169,11 +168,13 @@ public class DodajRasporedController {
                 } catch (Exception e) {
                     System.out.println("Greska pri izmeni rasporeda: " + e.getMessage());
                 }
-                
+
+                JOptionPane.showMessageDialog(frm, "Raspored uspesno izmenjen!");
+
             }
         });
     }
-    
+
     private void validacijaDatuma() throws Exception {
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy.");
         try {
@@ -181,7 +182,7 @@ public class DodajRasporedController {
         } catch (ParseException ex) {
             throw new Exception("Datum mora biti u formatu: dd.MM.yyyy.");
         }
-        
+
         if (!"".equals(frm.getTxtRaspored().getText().trim())) {
             try {
                 datum = df.parse(frm.getTxtRaspored().getText().trim());
@@ -191,14 +192,14 @@ public class DodajRasporedController {
         } else {
             datum = null;
         }
-        
+
     }
-    
+
     public void validacijaVremena(String time) throws IllegalArgumentException {
-        if (time == null || time.length() != 5) {
+        if (time == null || time.length() < 5) {
             throw new IllegalArgumentException("Vreme mora biti u formatu: HH:MM");
         }
-        
+
         char[] timeChars = time.toCharArray();
 
         // Validate the hour part
@@ -216,15 +217,15 @@ public class DodajRasporedController {
             throw new IllegalArgumentException("Vreme mora biti u formatu: HH:MM");
         }
     }
-    
+
     private boolean validacijaSata(char desetica, char jedinica) {
         int sat = Character.getNumericValue(desetica) * 10 + Character.getNumericValue(jedinica);
         return sat >= 0 && sat <= 23;
     }
-    
+
     private boolean validacijaMinuta(char desetica, char jedinica) {
         int minut = Character.getNumericValue(desetica) * 10 + Character.getNumericValue(jedinica);
         return minut >= 0 && minut <= 59;
     }
-    
+
 }

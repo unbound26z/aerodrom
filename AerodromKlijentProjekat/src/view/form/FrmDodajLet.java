@@ -7,6 +7,7 @@ package view.form;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -32,12 +33,12 @@ public class FrmDodajLet extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblMestoPolaska = new javax.swing.JLabel();
+        lblMestoDolaska = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblPilot = new javax.swing.JLabel();
+        lblAvion = new javax.swing.JLabel();
         btnDodaj = new javax.swing.JButton();
         txtTrajanje = new javax.swing.JTextField();
         txtCena = new javax.swing.JTextField();
@@ -49,17 +50,17 @@ public class FrmDodajLet extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Mesto polaska:");
+        lblMestoPolaska.setText("Mesto polaska:");
 
-        jLabel2.setText("Mesto dolaska:");
+        lblMestoDolaska.setText("Mesto dolaska:");
 
         jLabel3.setText("Trajanje:");
 
         jLabel4.setText("Cena:");
 
-        jLabel5.setText("Pilot:");
+        lblPilot.setText("Pilot:");
 
-        jLabel6.setText("Avion:");
+        lblAvion.setText("Avion:");
 
         btnDodaj.setText("Dodaj");
 
@@ -83,11 +84,11 @@ public class FrmDodajLet extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
+                            .addComponent(lblAvion)
+                            .addComponent(lblPilot)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(lblMestoDolaska)
+                            .addComponent(lblMestoPolaska))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbPolazak, 0, 463, Short.MAX_VALUE)
@@ -103,11 +104,11 @@ public class FrmDodajLet extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblMestoPolaska)
                     .addComponent(cbPolazak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblMestoDolaska)
                     .addComponent(cbDolazak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -119,11 +120,11 @@ public class FrmDodajLet extends javax.swing.JDialog {
                     .addComponent(txtCena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblPilot)
                     .addComponent(cbPilot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblAvion)
                     .addComponent(cbAvion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -143,12 +144,12 @@ public class FrmDodajLet extends javax.swing.JDialog {
     private javax.swing.JComboBox<Object> cbDolazak;
     private javax.swing.JComboBox<Object> cbPilot;
     private javax.swing.JComboBox<Object> cbPolazak;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lblAvion;
+    private javax.swing.JLabel lblMestoDolaska;
+    private javax.swing.JLabel lblMestoPolaska;
+    private javax.swing.JLabel lblPilot;
     private javax.swing.JTextField txtCena;
     private javax.swing.JTextField txtTrajanje;
     // End of variables declaration//GEN-END:variables
@@ -167,6 +168,22 @@ public class FrmDodajLet extends javax.swing.JDialog {
 
     public JButton getBtnIzmeni() {
         return btnIzmeni;
+    }
+
+    public JLabel getLblMestoPolaska() {
+        return lblMestoPolaska;
+    }
+
+    public JLabel getLblMestoDolaska() {
+        return lblMestoDolaska;
+    }
+
+    public JLabel getLblAvion() {
+        return lblAvion;
+    }
+
+    public JLabel getLblPilot() {
+        return lblPilot;
     }
 
     public void setBtnDodaj(JButton btnDodaj) {

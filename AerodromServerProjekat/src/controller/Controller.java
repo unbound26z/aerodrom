@@ -176,7 +176,7 @@ public class Controller {
         return operation.vratiDestinacije();
     }
 
-    public void obrisiDestinaciju(Destinacija destinacija) throws Exception {
+        public void obrisiDestinaciju(Destinacija destinacija) throws Exception {
         ObrisiDestinaciju operation = new ObrisiDestinaciju();
         operation.execute(destinacija);
     }

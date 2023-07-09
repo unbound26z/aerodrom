@@ -41,6 +41,7 @@ public class DodajDestinacijuController {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
+                    validacija();
                     String nazivDestinacije = frm.getTxtNaziv().getText().trim();
                     String drzava = frm.getTxtDrzava().getText().trim();
                     Communication.getInstance().zapamtiDestinaciju(new Destinacija(0, nazivDestinacije, drzava));

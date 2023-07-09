@@ -24,21 +24,21 @@ import view.form.mode.FrmMode;
  * @author Nikola
  */
 public class DodajLetController {
-
+    
     private final FrmDodajLet frm;
-
+    
     public DodajLetController(view.form.FrmDodajLet frmDodajLet) {
         this.frm = frmDodajLet;
         addActionListener();
-
+        
     }
-
+    
     public void openForm(FrmMode frmMode) {
-
+        
         prepareView(frmMode);
         frm.setVisible(true);
     }
-
+    
     private void addActionListener() {
         frm.dodajBtnDodajLet(new ActionListener() {
             @Override
@@ -51,7 +51,7 @@ public class DodajLetController {
                     Destinacija mestoDolaska = (Destinacija) frm.getCbDolazak().getSelectedItem();
                     Avion avion = (Avion) frm.getCbAvion().getSelectedItem();
                     Pilot pilot = (Pilot) frm.getCbPilot().getSelectedItem();
-
+                    
                     Communication.getInstance().zapamtiLet(new Let(Long.valueOf(0), trajanje, cena, mestoPolaska, avion, mestoDolaska, pilot));
                     JOptionPane.showMessageDialog(frm, "Let uspesno kreiran!");
                 } catch (SocketException se) {
@@ -65,7 +65,7 @@ public class DodajLetController {
                 }
             }
         });
-
+        
         frm.dodajBtnIzmeniLet(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -75,12 +75,12 @@ public class DodajLetController {
                         JOptionPane.showMessageDialog(frm, "Polja ne smeju biti prazna!");
                         return;
                     }
-
+                    
                     Let m = new Let();
-
+                    
                     int cena = Integer.parseInt(frm.getTxtCena().getText().trim());
                     int trajanje = Integer.parseInt(frm.getTxtTrajanje().getText().trim());
-
+                    
                     Long id = ((Let) ViewCoordinator.getInstance().getParam("Let")).getLetId();
                     m.setId(id);
                     m.setCena(cena);
@@ -98,10 +98,10 @@ public class DodajLetController {
             }
         });
     }
-
+    
     private void prepareView(FrmMode mode) {
         try {
-
+            
             fillCbPolazak();
             fillCbAvion();
             fillCbPilot();
@@ -109,9 +109,9 @@ public class DodajLetController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
+        
     }
-
+    
     private void prepareMode(FrmMode mode) {
         switch (mode) {
             case ADD:
@@ -126,10 +126,14 @@ public class DodajLetController {
                 frm.getCbDolazak().setVisible(false);
                 frm.getCbAvion().setVisible(false);
                 frm.getCbPilot().setVisible(false);
+                frm.getLblAvion().setVisible(false);
+                frm.getLblMestoDolaska().setVisible(false);
+                frm.getLblMestoPolaska().setVisible(false);
+                frm.getLblPilot().setVisible(false);
                 break;
         }
     }
-
+    
     private void fillCbPolazak() throws Exception {
         List<Destinacija> list = Communication.getInstance().vratiListuDestinaicja();
         for (Destinacija d : list) {
@@ -138,7 +142,7 @@ public class DodajLetController {
             frm.getCbDolazak().addItem(d);
         }
     }
-
+    
     private void fillCbAvion() throws Exception {
         List<Avion> list = Communication.getInstance().vratiListuAviona();
         for (Avion d : list) {
@@ -146,7 +150,7 @@ public class DodajLetController {
             frm.getCbAvion().addItem(d);
         }
     }
-
+    
     private void fillCbPilot() throws Exception {
         List<Pilot> list = Communication.getInstance().vratiListuPilota();
         for (Pilot d : list) {
@@ -154,13 +158,13 @@ public class DodajLetController {
             frm.getCbPilot().addItem(d);
         }
     }
-
+    
     private void validacija() throws Exception {
         if (frm.getTxtCena().getText().isEmpty()
                 | frm.getTxtTrajanje().getText().isEmpty()) {
             throw new Exception("Ne sme ostati prazno polje!");
         }
-
+        
     }
-
+    
 }
