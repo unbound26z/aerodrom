@@ -11,11 +11,11 @@ import java.util.List;
  * @author Nikola
  */
 public interface Repository<T> {
-    void add(T param) throws Exception;
+    int add(T param) throws Exception;
     List<T> getAll(T param) throws Exception;
     List<T> getAllBy(T param, String field, String value) throws Exception;
-    void edit(T param) throws Exception;
-    void delete(T param) throws Exception;
+    int edit(T param) throws Exception;
+    int delete(T param) throws Exception;
     List<T> search(T param) throws Exception;
     
     

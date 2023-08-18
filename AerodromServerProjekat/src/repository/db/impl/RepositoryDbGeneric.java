@@ -19,7 +19,7 @@ import repository.db.DbRepository;
 public class RepositoryDbGeneric implements DbRepository<GenericEntity> {
 
     @Override
-    public void add(GenericEntity entity) throws Exception {
+    public int add(GenericEntity entity) throws Exception {
         try {
             Connection connection = DbConnectionFactory.getInstance().getConnection();
             StringBuilder sb = new StringBuilder();
@@ -41,9 +41,10 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity> {
             }
             statement.close();
             rsKey.close();
-
+            return 1;
         } catch (Exception e) {
-            throw e;
+            System.out.println(e.getMessage());
+            return 0;
         }
     }
 
@@ -64,7 +65,7 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity> {
     }
 
     @Override
-    public void edit(GenericEntity entity) throws Exception {
+    public int edit(GenericEntity entity) throws Exception {
         try {
             Connection connection = DbConnectionFactory.getInstance().getConnection();
 
@@ -81,9 +82,10 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity> {
             statement.executeUpdate(query);
 
             statement.close();
-
+            return 1;
         } catch (Exception e) {
-            throw e;
+            System.out.println(e.getMessage());
+            return 0;
         }
     }
 
@@ -109,7 +111,7 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity> {
     }
 
     @Override
-    public void delete(GenericEntity entity) throws Exception {
+    public int delete(GenericEntity entity) throws Exception {
         try {
             Connection connection = DbConnectionFactory.getInstance().getConnection();
 
@@ -124,8 +126,10 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity> {
             statement.executeUpdate(query);
 
             statement.close();
+            return 1;
         } catch (Exception e) {
-            throw e;
+            System.out.println(e.getMessage());
+            return 0;
         }
     }
 
